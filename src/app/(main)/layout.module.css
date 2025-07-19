@@ -1,0 +1,70 @@
+.nav {
+  background-color: var(--tertiaryColor);
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  align-items: center;
+}
+
+.nav div:first-of-type {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  grid-column: 2;
+}
+
+.nav div:first-of-type a {
+  font-weight: 600;
+  text-transform: uppercase;
+  width: min-content;
+}
+
+.nav > a:first-of-type {
+  grid-column: 1;
+  justify-self: right;
+}
+
+.nav > a:first-of-type:hover {
+  background-color: var(--unpopularColor);
+}
+
+.nav > a:last-of-type {
+  grid-column: 3;
+  justify-self: left;
+}
+
+.nav > a:last-of-type:hover {
+  background-color: var(--popularColor);
+}
+
+.nav > a {
+  grid-row: 1;
+}
+
+.nav div:last-of-type {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav div:last-of-type a:hover, .nav div:last-of-type a.active {
+  background-color: var(--secondaryColor);
+}
+
+.nav span, .nav a {
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.nav a.active {
+  font-weight: 600;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.main {
+  padding: 4rem;
+}
