@@ -2,7 +2,7 @@ import styles from "./BlogLink.module.css";
 
 export default function BlogLink() {
   return (
-    <div>
+    <div className={styles.div}>
       <h2>Title of Post Title of Post Title of Post</h2>
       <span>Pinned</span>
       <div>

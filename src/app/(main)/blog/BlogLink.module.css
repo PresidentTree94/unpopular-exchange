@@ -1,0 +1,33 @@
+.div {
+  background-color: var(--secondaryColor);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  position: relative;
+  width: max(13rem, 100%);
+}
+
+.div span {
+  position: absolute;
+  bottom: 100%;
+  transform: translateY(50%);
+  right: 1.25rem;
+  padding: 0.125rem 0.25rem;
+  font-weight: 600;
+}
+
+.div div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.div p {
+  background-color: var(--tertiaryColor);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: max-content;
+}

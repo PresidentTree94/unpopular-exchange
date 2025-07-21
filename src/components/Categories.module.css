@@ -1,0 +1,65 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 14.8rem);
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.search {
+  background-color: var(--secondaryColor);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  max-width: fit-content;
+  grid-column: -1 / 1;
+  justify-self: center;
+}
+
+.search div:first-of-type {
+  background-color: var(--textColor);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.search svg {
+  height: 1rem;
+}
+
+.search input {
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  color: var(--primaryColor);
+}
+
+.search div:last-of-type {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.grid > div:not(:first-of-type) {
+  background-color: var(--secondaryColor);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.red:hover {
+  background-color: var(--unpopularColor) !important;
+}
+
+.blue:hover {
+  background-color: var(--popularColor) !important;
+}

@@ -41,11 +41,24 @@ h1, h2, h3 {
 
 span {
   background-image: linear-gradient(to right, var(--unpopularColor), var(--popularColor));
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   display: inline-block;
   text-transform: uppercase;
 }
 
 a {
   color: inherit;
+}
+
+button, input[type="submit"] {
+  background-color: var(--tertiaryColor);
+  border: none;
+  color: var(--textColor);
+  padding: 0.5rem 1rem;
+}
+
+button, select, input, textarea {
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: 0.5rem;
 }
