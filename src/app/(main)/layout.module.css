@@ -6,8 +6,8 @@
   padding: 0.5rem 0;
   align-items: center;
   position: fixed;
-  width: 100%;
   top: 0;
+  width: 100%;
   z-index: 1;
   transition: height 0.5s ease;
 }
@@ -87,6 +87,21 @@
   transform: rotate(180deg);
 }
 
+.main {
+  padding: 4rem;
+  margin: 5.6rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 70rem; /*Equal to four category boxes.*/
+  overflow: hidden;
+}
+
+.main > * {
+  min-width: 14rem;
+}
+
 @media (width < 28.25rem) {
   .nav {
     display: flex;
@@ -108,5 +123,10 @@
 
   .nav, .nav div:last-of-type {
     gap: 1rem;
+  }
+
+  .main {
+    padding: 3rem;
+    margin-top: 4.65rem;
   }
 }

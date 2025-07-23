@@ -1,9 +1,7 @@
-import MainWrapper from "@/components/MainWrapper";
+import Threads from "@/components/Threads";
 
 export default function Profile() {
   return (
-    <MainWrapper>
-      <></>
-    </MainWrapper>
+    <Threads title="Started Threads" />
   );
 }

@@ -28,12 +28,12 @@ export default function DefaultLayout({
           <Link href="/blog" className={pathname === "/blog" ? styles.active : ""} onClick={closeMenu}>Blog</Link>
           <Link href="/feed" className={pathname === "/feed" ? styles.active : ""}>Feed</Link>
           <Link href="/activity" className={pathname === "/activity" ? styles.active : ""}>Activity</Link>
-          <Link href="/profile" className={pathname === "/profile" ? styles.active : ""}>Profile</Link>
+          <Link href="/profile" className={pathname.startsWith("/profile") ? styles.active : ""}>Profile</Link>
           <Link href="/submit" className={pathname === "/submit" ? styles.active : ""} onClick={closeMenu}>Submit</Link>
           <Link href="/settings" className={pathname === "/settings" ? styles.active : ""}>Settings</Link>
         </div>
       </nav>
-      {children}
+      <main className={styles.main}>{children}</main>
     </>
   );
 }

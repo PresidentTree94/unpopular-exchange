@@ -1,9 +1,8 @@
-import MainWrapper from "@/components/MainWrapper";
 import styles from "./submit.module.css";
 
 export default function Submit() {
   return (
-    <MainWrapper maxWidth={64}>
+    <>
       <form className={styles.form}>
         <div>
           <div>
@@ -42,6 +41,6 @@ export default function Submit() {
         <textarea rows={5} maxLength={500} placeholder="Do you have anything to (respectfully) say about this opinion or pet peeve? (max: 500)"></textarea>
         <input type="submit" />
       </form>
-    </MainWrapper>
+    </>
   );
 }

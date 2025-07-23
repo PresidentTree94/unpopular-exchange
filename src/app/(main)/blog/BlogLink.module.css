@@ -3,7 +3,7 @@
   padding: 1.25rem;
   border-radius: 0.75rem;
   position: relative;
-  width: max(13rem, 100%);
+  width: 100%;
 }
 
 .div span {
@@ -25,9 +25,8 @@
 
 .div p {
   background-color: var(--tertiaryColor);
-  padding: 0.125rem 0.25rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
   text-transform: uppercase;
-  width: max-content;
 }

@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 14.8rem);
+  grid-template-columns: repeat(auto-fit, 14rem);
   gap: 2rem;
   justify-content: center;
   width: 100%;
@@ -26,6 +26,8 @@
 
 .search svg {
   height: 1rem;
+  width: auto;
+  color: var(--primaryColor);
 }
 
 .search input {
@@ -54,6 +56,13 @@
   align-items: center;
   gap: 0.5rem;
   border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.grid > div:not(:first-of-type) svg {
+  height: 2.5rem;
+  width: auto;
+  color: var(--textColor);
 }
 
 .red:hover {
