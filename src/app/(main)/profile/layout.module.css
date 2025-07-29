@@ -1,7 +1,6 @@
 .header {
   background-color: var(--secondaryColor);
   padding: 1rem;
-  width: 100%;
   border-radius: 0.75rem;
   display: flex;
   text-align: center;
@@ -36,7 +35,6 @@
 }
 
 .section {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

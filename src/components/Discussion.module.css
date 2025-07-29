@@ -1,0 +1,68 @@
+.section {
+  background-color: var(--secondaryColor);
+  border-radius: 0.75rem;
+}
+
+.section article {
+  padding: 0 1rem 1rem;
+}
+
+.section article > div:first-of-type {
+  display: flex;
+  gap: 1rem;
+}
+
+.section article div button {
+  flex-grow: 1;
+  font-weight: 600;
+}
+
+.section article div button:first-of-type {
+  background-color: var(--unpopularColor);
+}
+
+.section article div button:last-of-type {
+  background-color: var(--popularColor);
+}
+
+.section form {
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section form div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section form div input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.section textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+}
+
+.section form > input {
+  margin: 0 auto;
+}
+
+.section hr {
+  border: 1px solid var(--textColor);
+  margin: 1rem auto 0;
+}
+
+.section form img {
+  border-radius: 100%;
+  width: 2rem;
+}
+
+.reply {
+  margin-left: 1.5rem;
+}

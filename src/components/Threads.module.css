@@ -31,62 +31,15 @@
   flex-wrap: wrap;
 }
 
-.div {
-  background-color: var(--secondaryColor);
-  padding: 1rem;
-  border-radius: 0.75rem;
+.article {
   width: 100%;
-  position: relative;
-}
-
-.div span {
-  position: absolute;
-  bottom: 100%;
-  transform: translateY(50%);
-  right: 1.25rem;
-  padding: 0.125rem 0.25rem;
-  font-weight: 600;
-}
-
-.div > div {
-  justify-content: space-between;
-  margin-top: 0.5rem;
-}
-
-.div div {
   display: flex;
-  gap: 0.5rem;
-}
-
-.div p {
-  background-color: var(--tertiaryColor);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.div svg {
-  height: 0.8rem;
-  color: var(--textColor);
+  flex-direction: column;
+  gap: 2rem;
 }
 
 @media (width < 37rem) {
   .details div {
     flex-direction: column;
-  }
-}
-
-@media (width < 23.25rem) {
-  .div div div:first-of-type {
-    display: none;
-  }
-
-  .div > div {
-    justify-content: flex-end;
   }
 }

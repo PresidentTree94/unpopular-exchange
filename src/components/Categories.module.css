@@ -3,7 +3,6 @@
   grid-template-columns: repeat(auto-fit, 14rem);
   gap: 2rem;
   justify-content: center;
-  width: 100%;
 }
 
 .search {

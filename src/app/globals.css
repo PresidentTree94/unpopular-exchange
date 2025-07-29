@@ -39,7 +39,7 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
-span {
+span:not(p span) {
   background-image: linear-gradient(to right, var(--unpopularColor), var(--popularColor));
   border-radius: 0.5rem;
   display: inline-block;

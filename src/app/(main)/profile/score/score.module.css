@@ -1,0 +1,37 @@
+.canvas {
+  max-width: 544px;
+  position: relative;
+}
+
+.breakdown > ul > li {
+  text-transform: uppercase;
+}
+
+.breakdown ul {
+  list-style-type: none;
+  line-height: 1.5;
+}
+
+.breakdown > ul > li:last-of-type {
+  margin-top: 1rem;
+}
+
+.breakdown ul ul {
+  margin-left: 1rem;
+}
+
+.breakdown li {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.breakdown hr {
+  flex-grow: 1;
+  margin-bottom: 0.35rem;
+  border: none;
+  border-bottom: 1px dotted var(--textColor);
+}
+
+.canvas, .breakdown {
+  width: 100%;
+}

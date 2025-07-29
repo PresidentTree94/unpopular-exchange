@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquarePollVertical, faMessage, faIcons } from "@fortawesome/free-solid-svg-icons";
+import Thread from "./Thread";
 import styles from "./Threads.module.css";
 
-/*Thread data arrays will also be passed.*/
+/*Thread data category arrays will also be passed.*/
 export default function Threads({
   title,
 }: Readonly<{
@@ -32,48 +31,11 @@ export default function Threads({
         </fieldset>
       </details>
       <h2>{title}</h2>
-      <div className={styles.div}>
-        <h3>Title of Thread Title of Thread Title of Thread</h3>
-        <span>Unpopular</span>
-        <div>
-          <div>
-            <p>000 <FontAwesomeIcon icon={faSquarePollVertical} /></p>
-            <p>000 <FontAwesomeIcon icon={faMessage} /></p>
-          </div>
-          <div>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.div}>
-        <h3>Title of Thread Title of Thread Title of Thread</h3>
-        <span>Unpopular</span>
-        <div>
-          <div>
-            <p>000 <FontAwesomeIcon icon={faSquarePollVertical} /></p>
-            <p>000 <FontAwesomeIcon icon={faMessage} /></p>
-          </div>
-          <div>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.div}>
-        <h3>Title of Thread Title of Thread Title of Thread</h3>
-        <span>Unpopular</span>
-        <div>
-          <div>
-            <p>000 <FontAwesomeIcon icon={faSquarePollVertical} /></p>
-            <p>000 <FontAwesomeIcon icon={faMessage} /></p>
-          </div>
-          <div>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-            <p>#<FontAwesomeIcon icon={faIcons} /></p>
-          </div>
-        </div>
-      </div>
+      <article className={styles.article}>
+        <Thread />
+        <Thread />
+        <Thread />
+      </article>
     </>
   );
 }
