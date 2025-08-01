@@ -1,4 +1,4 @@
-import Categories from "@/components/Categories";
+import Categories from "@/shared/Categories";
 
 export default function Opinions() {
   return (

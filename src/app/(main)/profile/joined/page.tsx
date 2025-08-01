@@ -1,4 +1,4 @@
-import Threads from "@/components/Threads";
+import Threads from "@/shared/Threads";
 
 export default function Joined() {
   return (

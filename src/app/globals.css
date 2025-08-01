@@ -62,3 +62,8 @@ button, select, input, textarea {
   font-family: inherit;
   border-radius: 0.5rem;
 }
+
+svg {
+  height: 1rem;
+  width: auto !important;
+}

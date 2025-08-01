@@ -1,4 +1,4 @@
-import Discussion from "@/components/Discussion";
+import Discussion from "@/shared/Discussion";
 
 export default function Opinion() {
   return (

@@ -24,8 +24,6 @@
 }
 
 .search svg {
-  height: 1rem;
-  width: auto;
   color: var(--primaryColor);
 }
 
@@ -60,7 +58,6 @@
 
 .grid > div:not(:first-of-type) svg {
   height: 2.5rem;
-  width: auto;
   color: var(--textColor);
 }
 

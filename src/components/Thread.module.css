@@ -3,20 +3,17 @@
   padding: 1rem;
   border-radius: 0.75rem;
   position: relative;
+  container-type: inline-size;
 }
 
 .div i {
   font-size: 0.875rem;
 }
 
-.div svg {
-  height: 1rem;
-}
-
 .div > svg {
   position: absolute;
   top: 1rem;
-  right: 0.25rem;
+  right: 0.75rem;
 }
 
 .div a {
@@ -55,7 +52,6 @@
 
 .bar svg {
   position: absolute;
-  width: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -88,8 +84,8 @@
   height: 0.8rem;
 }
 
-@media (width < 23.5rem) {
-  .stats p span {
+@container (width < 14.25rem) {
+  .stats span {
     display: none;
   }
 }

@@ -10,6 +10,7 @@
   width: max(12.25rem, 100%);
   z-index: 1;
   transition: height 0.5s ease;
+  border: 1px solid var(--secondaryColor);
 }
 
 .nav div:first-of-type {
@@ -89,13 +90,12 @@
 
 .main {
   padding: 4rem;
-  margin: 5.6rem auto 0;
+  margin: 5.7rem auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   max-width: 70rem; /*Equal to four category boxes.*/
-  overflow: hidden;
 }
 
 .main > * {
@@ -103,6 +103,10 @@
 }
 
 @media (width < 28.25rem) {
+  .main {
+    overflow: hidden;
+  }
+
   .nav {
     display: flex;
     flex-direction: column;
