@@ -13,7 +13,7 @@ export default function ProfileLayout({
           <img src="https://placehold.co/100x100" />
           <h3>AccountName</h3>
         </div>
-        <div>
+        <div className={styles.links}>
           <div>
             <h2>000</h2>
             <Link href="/profile">Threads Started</Link>

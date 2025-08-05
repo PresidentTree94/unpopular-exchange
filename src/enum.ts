@@ -1,4 +1,4 @@
 export enum Type {
-  OPINIONS = "/opinions/thread/test",
-  PEEVES = "/peeves/thread/test"
+  OPINIONS = "/opinions/",
+  PEEVES = "/peeves/"
 }

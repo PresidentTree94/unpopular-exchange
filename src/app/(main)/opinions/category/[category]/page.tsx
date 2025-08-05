@@ -3,6 +3,6 @@ import { Type } from "@/enum";
 
 export default function OCategory() {
   return (
-    <Category threadType={Type.OPINIONS} />
+    <Category type={Type.OPINIONS} />
   );
 }

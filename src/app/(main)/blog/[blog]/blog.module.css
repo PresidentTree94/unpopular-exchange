@@ -1,0 +1,41 @@
+.section {
+  background-color: var(--secondaryColor);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section h1, .section i, .section h2 {
+  text-align: center;
+}
+
+.section figure {
+  width: min(100%, 30rem);
+  margin: 0 auto;
+}
+
+.section img {
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+.section figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+@media (width < 34rem) {
+  .section h1, .section h2 {
+    overflow-wrap: break-word;
+  }
+
+  .section h1 {
+    font-size: 1.75rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+  }
+}

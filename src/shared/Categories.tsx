@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faIcons } from "@fortawesome/free-solid-svg-icons";
+import { Type } from "@/enum";
 import styles from "./Categories.module.css";
 
 /*Category data arrays will also be passed.*/
 export default function Categories({
   type,
 }: Readonly<{
-  type: string;
+  type: Type;
 }>) {
   return (
     <>
@@ -17,37 +18,37 @@ export default function Categories({
             <input type="text" placeholder="Search" />
           </div>
           <div>
-            <button className={type === "opinions" ? styles.red : styles.blue}>Alphabetical</button>
-            <button className={type === "opinions" ? styles.red : styles.blue}>Reverse Alphabetical</button>
-            <button className={type === "opinions" ? styles.red : styles.blue}>Most Discussions</button>
-            <button className={type === "opinions" ? styles.red : styles.blue}>Least Discussions</button>
+            <button className={type === Type.OPINIONS ? styles.red : styles.blue}>Alphabetical</button>
+            <button className={type === Type.OPINIONS ? styles.red : styles.blue}>Reverse Alphabetical</button>
+            <button className={type === Type.OPINIONS ? styles.red : styles.blue}>Most Discussions</button>
+            <button className={type === Type.OPINIONS ? styles.red : styles.blue}>Least Discussions</button>
           </div>
         </div>
-        <div className={type === "opinions" ? styles.red : styles.blue}>
+        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
           <FontAwesomeIcon icon={faIcons} />
           <h3>#Category</h3>
           <p>000 Discussions</p>
-        </div>
-        <div className={type === "opinions" ? styles.red : styles.blue}>
+        </a>
+        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
           <FontAwesomeIcon icon={faIcons} />
           <h3>#Category</h3>
           <p>000 Discussions</p>
-        </div>
-        <div className={type === "opinions" ? styles.red : styles.blue}>
+        </a>
+        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
           <FontAwesomeIcon icon={faIcons} />
           <h3>#Category</h3>
           <p>000 Discussions</p>
-        </div>
-        <div className={type === "opinions" ? styles.red : styles.blue}>
+        </a>
+        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
           <FontAwesomeIcon icon={faIcons} />
           <h3>#Category</h3>
           <p>000 Discussions</p>
-        </div>
-        <div className={type === "opinions" ? styles.red : styles.blue}>
+        </a>
+        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
           <FontAwesomeIcon icon={faIcons} />
           <h3>#Category</h3>
           <p>000 Discussions</p>
-        </div>
+        </a>
       </section>
     </>
   );

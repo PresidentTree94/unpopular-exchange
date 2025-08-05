@@ -44,7 +44,7 @@
   gap: 0.5rem;
 }
 
-.grid > div:not(:first-of-type) {
+.grid > a {
   background-color: var(--secondaryColor);
   aspect-ratio: 1 / 1;
   display: flex;
@@ -54,9 +54,10 @@
   gap: 0.5rem;
   border-radius: 0.75rem;
   padding: 1rem;
+  text-decoration: none;
 }
 
-.grid > div:not(:first-of-type) svg {
+.grid > a svg {
   height: 2.5rem;
   color: var(--textColor);
 }

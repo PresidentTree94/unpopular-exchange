@@ -1,0 +1,18 @@
+.notes {
+  background-color: var(--secondaryColor);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  width: 100%;
+}
+
+.notes > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.notes svg {
+  background-color: var(--tertiaryColor);
+}

@@ -6,13 +6,13 @@ export default function BlogLink({
   isPinned?: boolean;
 }>) {
   return (
-    <div className={styles.div}>
-      <h2>Title of Post Title of Post Title of Post</h2>
+    <a href="/blog/test" className={styles.div}>
+      <h2>Notification of Post Title of Post Title of Post</h2>
       {isPinned && <span>Pinned</span>}
       <div>
         <p>Type?</p>
         <p>00 00 0000</p>
       </div>
-    </div>
+    </a>
   );
 }

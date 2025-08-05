@@ -1,41 +1,46 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquarePollVertical, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { faThumbTack, faSquarePollVertical, faMessage } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "./Sidebar";
+import sbstyles from "./Sidebar.module.css";
 import Details from "../components/Details";
 import Thread from "../components/Thread";
 import { Type } from "@/enum";
 import styles from "./Category.module.css";
 
 export default function Category({
-  threadType,
+  type,
 }: Readonly<{
-  threadType: Type;
+  type: Type;
 }>) {
   return (
-    <section className={styles.section}>
-      <article>
-        <h1>#Category</h1>
+    <Sidebar
+      articleContent={<>
+        <div className={`${styles.top} ${sbstyles.btn}`}>
+          <h1>#Category</h1>
+          <FontAwesomeIcon icon={faThumbTack} />
+        </div>
         <Details
-          maxWidth={55.53}
-          breakWidth={41}
-          leftLeg="Sort"
-          left={["Newest", "Oldest", 
+          maxWidth={36.25}
+          breakWidth={31.75}
+          leftFilter={["Sort", ["Newest", "Oldest", 
             <><FontAwesomeIcon icon={faSquarePollVertical}/> {"+"}</>,
             <><FontAwesomeIcon icon={faSquarePollVertical}/> {"-"}</>,
             <><FontAwesomeIcon icon={faMessage}/> {"+"}</>,
             <><FontAwesomeIcon icon={faMessage}/> {"-"}</>
-          ]}
-          rightLeg="Score"
-          right={["All", "Unpopular", "Mixed", "Popular"]}
+          ]]}
+          rightFilter={["Score", ["All", "Unpopular", "Popular"]]}
         />
-        <Thread type={threadType} />
-        <Thread type={threadType} />
-        <Thread type={threadType} />
-        <Thread type={threadType} />
-        <Thread type={threadType} />
-        <Thread type={threadType} />
-      </article>
-      <aside>
-        <div>
+        <div className={styles.threads}>
+          <Thread type={type} />
+          <Thread type={type} />
+          <Thread type={type} />
+          <Thread type={type} />
+          <Thread type={type} />
+          <Thread type={type} />
+        </div>
+      </>}
+      asideContent={<>
+        <div className={sbstyles.stats}>
           <h2>Statistics</h2>
           <div>
             <h3>000%</h3>
@@ -50,11 +55,11 @@ export default function Category({
             <p>Your unpopular score</p>
           </div>
         </div>
-        <div>
+        <div className={sbstyles.featured}>
           <h2>Featured Thread</h2>
-          <Thread type={threadType} />
+          <Thread type={type} />
         </div>
-      </aside>
-    </section>
+      </>}
+    />
   );
 }

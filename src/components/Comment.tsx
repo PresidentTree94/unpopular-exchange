@@ -10,10 +10,10 @@ export default function Comment({
   return (
     <div className={styles.user}>
       <img src="https://placehold.co/100x100"/>
-      <div>
+      <div className={!isReply ? styles.left : styles.right}>
         <FontAwesomeIcon icon={faEllipsisVertical} />
         {!isReply ? <i>Username says...</i> : <i>Username says to Username...</i>}
-        <p>Comments go here. Comments go here. Comments go here.</p>
+        <p>Comments go here. Comments go here. Comments go here. Comments go here. Comments go here. Comments go here.</p>
       </div>
     </div>
   );

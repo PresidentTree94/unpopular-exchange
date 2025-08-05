@@ -15,7 +15,7 @@ export default function Thread({
   return (
     <div className={styles.div}>
       <i>Username thinks...</i>
-      {!description ? <><h3><a href={type}>{title}</a></h3><span>Unpopular</span></> :
+      {!description ? <><h3><a href={type + "thread/test"}>{title}</a></h3><span>Unpopular</span></> :
       <><h2>{title}</h2><p>{description}</p><div className={styles.bar}><FontAwesomeIcon icon={faCircleDot} /></div><p>000% of users agree with this.</p></>}
       <FontAwesomeIcon icon={faEllipsisVertical} />
       <div className={styles.stats}>

@@ -6,7 +6,7 @@ import styles from "./Discussion.module.css";
 export default function Discussion() {
   return (
     <section className={styles.section}>
-      <Thread type={Type.PEEVES} description="Description goes here?" />
+      <Thread type={Type.OPINIONS} description="Description goes here?" />
       <article>
         <div>
           <button>Disagree</button>
@@ -24,7 +24,7 @@ export default function Discussion() {
               <label>Use profile handle</label>
             </div>
           </div>
-          <textarea rows={3} maxLength={500} placeholder="What do you have to (respectfully) say to this? (max: 500)"></textarea>
+          <textarea rows={5} maxLength={500} placeholder="What do you have to (respectfully) say to this? (max: 500)"></textarea>
           <input type="submit" />
         </form>
         <hr/>

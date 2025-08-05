@@ -10,28 +10,46 @@
 
 .user div {
 	position: relative;
-	background: var(--textColor);
+	background-color: var(--textColor);
 	border-radius: 0.5rem;
-  margin-left: 1rem;
   padding: 0.5rem;
   color: var(--primaryColor);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 75%;
+}
+
+.left {
+  margin-left: 1rem;
+}
+
+.right {
+  margin-right: 1rem;
 }
 
 .user div:after {
 	content: '';
 	position: absolute;
-	left: 0;
 	top: 50%;
 	width: 0;
 	height: 0;
 	border: 0.5rem solid transparent;
-	border-right-color: var(--textColor);
-	border-left: 0;
 	margin-top: -0.5rem;
-	margin-left: -0.5rem;
+}
+
+.left:after {
+  left: 0;
+  border-right-color: var(--textColor) !important;
+  border-left: 0 !important;
+  margin-left: -0.5rem;
+}
+
+.right:after {
+  right: 0;
+  border-left-color: var(--textColor) !important;
+  border-right: 0 !important;
+  margin-right: -0.5rem;
 }
 
 .user svg {

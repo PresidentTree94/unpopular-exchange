@@ -11,14 +11,11 @@ export default function Threads({
   return (
     <>
       <Details
-        maxWidth={43.07}
-        breakWidth={37}
-        leftLeg="Type"
-        left={["All", "Opinions", "Peeves"]}
-        rightLeg="Score"
-        right={["All", "Unpopular", "Mixed", "Popular"]}
-        bottomLeg="Categories"
-        bottom={[]}
+        maxWidth={37.75}
+        breakWidth={23.85}
+        leftFilter={["Type", ["All", "Opinions", "Peeves"]]}
+        rightFilter={["Score", ["All", "Unpopular", "Popular"]]}
+        bottomFilters={[["Categories", []]]}
       />
       <h2>{title}</h2>
       <article style={{width: "100%", display: "flex", flexDirection: "column", gap: "2rem"}}>

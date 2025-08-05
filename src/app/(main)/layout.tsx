@@ -25,12 +25,12 @@ export default function DefaultLayout({
         <Link href="/opinions" className={pathname === "/opinions" ? styles.active : ""} onClick={closeMenu}>Opinions</Link>
         <Link href="/peeves" className={pathname === "/peeves" ? styles.active : ""} onClick={closeMenu}>Pet Peeves</Link>
         <div>
-          <Link href="/blog" className={pathname === "/blog" ? styles.active : ""} onClick={closeMenu}>Blog</Link>
-          <Link href="/feed" className={pathname === "/feed" ? styles.active : ""}>Feed</Link>
-          <Link href="/activity" className={pathname === "/activity" ? styles.active : ""}>Activity</Link>
+          <Link href="/blog" className={pathname.startsWith("/blog") ? styles.active : ""} onClick={closeMenu}>Blog</Link>
+          <Link href="/feed" className={pathname === "/feed" ? styles.active : ""} onClick={closeMenu}>Feed</Link>
+          <Link href="/activity" className={pathname === "/activity" ? styles.active : ""} onClick={closeMenu}>Activity</Link>
           <Link href="/profile" className={pathname.startsWith("/profile") ? styles.active : ""} onClick={closeMenu}>Profile</Link>
           <Link href="/submit" className={pathname === "/submit" ? styles.active : ""} onClick={closeMenu}>Submit</Link>
-          <Link href="/settings" className={pathname === "/settings" ? styles.active : ""}>Settings</Link>
+          <Link href="/settings" className={pathname === "/settings" ? styles.active : ""} onClick={closeMenu}>Settings</Link>
         </div>
       </nav>
       <main className={styles.main}>{children}</main>
