@@ -1,0 +1,30 @@
+.svg {
+  position: absolute;
+}
+
+.svg:hover {
+  cursor: pointer;
+}
+
+.div {
+  position: absolute;
+  background-color: var(--tertiaryColor);
+  color: var(--textColor);
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid var(--secondaryColor);
+  z-index: 1;
+}
+
+.div.active {
+  display: flex;
+}
+
+.div hr {
+  border-color: var(--textColor);
+}

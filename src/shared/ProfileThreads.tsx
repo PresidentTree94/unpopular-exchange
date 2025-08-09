@@ -1,13 +1,23 @@
+"use client";
+import { useState, useEffect } from "react";
+import { getEverything } from "@/api";
 import Details from "../components/Details";
-import Thread from "../components/Thread";
-import { Type } from "@/enum";
+import { ThreadType } from "@/enum";
+import Threads from "@/components/Threads";
+
 
 /*Thread data category arrays will also be passed.*/
-export default function Threads({
+export default function ProfileThreads({
   title,
 }: Readonly<{
   title: string;
 }>) {
+
+  const [threads, setThreads] = useState<ThreadType[]>([]);
+  useEffect(() => {
+    getEverything<ThreadType>("threads").then(setThreads);
+  }, []);
+
   return (
     <>
       <Details
@@ -18,12 +28,7 @@ export default function Threads({
         bottomFilters={[["Categories", []]]}
       />
       <h2>{title}</h2>
-      <article style={{width: "100%", display: "flex", flexDirection: "column", gap: "2rem"}}>
-        <Thread type={Type.OPINIONS} />
-        <Thread type={Type.OPINIONS} />
-        <Thread type={Type.PEEVES} />
-        <Thread type={Type.PEEVES} />
-      </article>
+      <Threads data={threads} />
     </>
   );
 }

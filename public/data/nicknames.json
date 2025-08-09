@@ -1,0 +1,50 @@
+[
+  {
+    "userId": 1,
+    "threadId": 1,
+    "useHandle": false,
+    "nickname": "PineappleLover455"
+  },
+  {
+    "userId": 2,
+    "threadId": 2,
+    "useHandle": true,
+    "nickname": "MyDogLola234"
+  },
+  {
+    "userId": 1,
+    "threadId": 3,
+    "useHandle": false,
+    "nickname": "ADecentDriver166"
+  },
+  {
+    "userId": 3,
+    "threadId": 4,
+    "useHandle": true,
+    "nickname": "IWantToSleep1425"
+  },
+  {
+    "userId": 2,
+    "threadId": 4,
+    "useHandle": true,
+    "nickname": "MyDogLola234"
+  },
+  {
+    "userId": 1,
+    "threadId": 4,
+    "useHandle": false,
+    "nickname": "LemonLover55"
+  },
+  {
+    "userId": 3,
+    "threadId": 1,
+    "useHandle": false,
+    "nickname": "PineappleHater455"
+  },
+  {
+    "userId": 1,
+    "threadId": 2,
+    "useHandle": true,
+    "nickname": "FruitLover55"
+  }
+]

@@ -1,12 +1,21 @@
+"use client";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePollVertical, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { getEverything } from "@/api";
 import Sidebar from "@/shared/Sidebar";
 import sbstyles from "@/shared/Sidebar.module.css";
 import Details from "@/components/Details";
+import { ThreadType } from "@/enum";
+import Threads from "@/components/Threads";
 import Thread from "@/components/Thread";
-import { Type } from "@/enum";
 
 export default function Feed() {
+  const [threads, setThreads] = useState<ThreadType[]>([]);
+  useEffect(() => {
+    getEverything<ThreadType>("threads").then(setThreads);
+  }, []);
+
   return (
     <Sidebar
       articleContent={<>
@@ -21,16 +30,9 @@ export default function Feed() {
               <><FontAwesomeIcon icon={faSquarePollVertical}/> {"-"}</>,
               <><FontAwesomeIcon icon={faMessage}/> {"+"}</>,
               <><FontAwesomeIcon icon={faMessage}/> {"-"}</>]],
-            ["Categories", []]]}
+            ["Categories", ["#category", "#category", "#category"]]]}
         />
-        <div style={{width: "100%", display: "flex", flexDirection: "column", gap: "2rem"}}>
-          <Thread type={Type.OPINIONS} />
-          <Thread type={Type.OPINIONS} />
-          <Thread type={Type.OPINIONS} />
-          <Thread type={Type.PEEVES} />
-          <Thread type={Type.PEEVES} />
-          <Thread type={Type.PEEVES} />
-        </div>
+        <Threads data={threads} />
       </>}
       asideContent={<>
         <div className={sbstyles.stats}>
@@ -41,7 +43,7 @@ export default function Feed() {
         </div>
         <div className={sbstyles.featured}>
           <h2>Featured Thread</h2>
-          <Thread type={Type.OPINIONS} />
+          {threads.length > 0 && <Thread data={threads[Math.floor(Math.random() * ((threads.length - 1) + 1))]} />}
         </div>
       </>}
     />

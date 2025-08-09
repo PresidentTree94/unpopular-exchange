@@ -1,11 +1,24 @@
+"use client";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperclip, faReply, faGavel, faThumbTack } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "@/shared/Sidebar";
 import sbstyles from "@/shared/Sidebar.module.css";
 import Details from "@/components/Details";
 import styles from "./activity.module.css";
+import { getEverything } from "@/api";
+import { CommentType, ThreadType, VoteType } from "@/enum";
 
 export default function Activity() {
+  const [threads, setThreads] = useState<ThreadType[]>([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
+  const [votes, setVotes] = useState<VoteType[]>([]);
+  useEffect(() => {
+    getEverything<ThreadType>("threads").then(setThreads);
+    getEverything<CommentType>("comments").then(setComments);
+    getEverything<VoteType>("votes").then(setVotes);
+  }, []);
+
   return (
     <Sidebar
       articleContent={<>
@@ -56,15 +69,15 @@ export default function Activity() {
         <div className={sbstyles.stats}>
           <h2>Platform Statistics</h2>
           <div>
-            <h3>000</h3>
+            <h3>{String(threads.length).padStart(3, "0")}</h3>
             <p>Threads posted</p>
           </div>
           <div>
-            <h3>000</h3>
+            <h3>{String(comments.length).padStart(3, "0")}</h3>
             <p>Comments made</p>
           </div>
           <div>
-            <h3>000</h3>
+            <h3>{String(votes.length).padStart(3, "0")}</h3>
             <p>Votes cast</p>
           </div>
         </div>

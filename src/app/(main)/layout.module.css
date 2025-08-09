@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   width: max(12.25rem, 100%);
-  z-index: 1;
+  z-index: 2;
   transition: height 0.5s ease;
   border: 1px solid var(--secondaryColor);
 }
@@ -33,6 +33,10 @@
   height: 2rem;
   fill: var(--textColor);
   transition: transform 0.5s ease;
+}
+
+.nav svg:hover {
+  cursor: pointer;
 }
 
 .nav > a:first-of-type {

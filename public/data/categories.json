@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "food",
+    "icon": "faPizzaSlice",
+    "type": "opinions"
+  },
+  {
+    "id": 2,
+    "title": "workplace",
+    "icon": "faBriefcase",
+    "type": "peeves"
+  },
+  {
+    "id": 3,
+    "title": "norms",
+    "icon": "faHandshake",
+    "type": "opinions"
+  },
+  {
+    "id": 4,
+    "title": "norms",
+    "icon": "faHandshake",
+    "type": "peeves"
+  }
+]

@@ -1,14 +1,25 @@
+"use client";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faIcons } from "@fortawesome/free-solid-svg-icons";
-import { Type } from "@/enum";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { getCategoriesByType, getEverything } from "@/api";
+import { Type, CategoryType, ThreadType } from "@/enum";
+import { IconMap } from "@/icons";
 import styles from "./Categories.module.css";
 
-/*Category data arrays will also be passed.*/
 export default function Categories({
   type,
 }: Readonly<{
   type: Type;
 }>) {
+
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [threads, setThreads] = useState<ThreadType[]>([]);
+  useEffect(() => {
+    getCategoriesByType(type).then(setCategories);
+    getEverything<ThreadType>("threads").then(setThreads);
+  });
+
   return (
     <>
       <section className={styles.grid}>
@@ -24,31 +35,13 @@ export default function Categories({
             <button className={type === Type.OPINIONS ? styles.red : styles.blue}>Least Discussions</button>
           </div>
         </div>
-        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
-          <FontAwesomeIcon icon={faIcons} />
-          <h3>#Category</h3>
-          <p>000 Discussions</p>
-        </a>
-        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
-          <FontAwesomeIcon icon={faIcons} />
-          <h3>#Category</h3>
-          <p>000 Discussions</p>
-        </a>
-        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
-          <FontAwesomeIcon icon={faIcons} />
-          <h3>#Category</h3>
-          <p>000 Discussions</p>
-        </a>
-        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
-          <FontAwesomeIcon icon={faIcons} />
-          <h3>#Category</h3>
-          <p>000 Discussions</p>
-        </a>
-        <a href={type + "category/test"} className={type === Type.OPINIONS ? styles.red : styles.blue}>
-          <FontAwesomeIcon icon={faIcons} />
-          <h3>#Category</h3>
-          <p>000 Discussions</p>
-        </a>
+        {categories.map((item) => (
+          <a href={"/" + type + "/category/" + item.title} className={type === Type.OPINIONS ? styles.red : styles.blue}>
+            <FontAwesomeIcon icon={IconMap[item.icon]} />
+            <h3>#{item.title}</h3>
+            <p>{String(threads.filter((thread) => thread.categoryIds.includes(item.id)).length).padStart(3, "0")} Discussions</p>
+          </a>
+        ))}
       </section>
     </>
   );

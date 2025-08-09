@@ -1,22 +1,40 @@
+"use client";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbTack, faSquarePollVertical, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { getCategoryByTypeAndTitle, getThreadsByCategoryId } from "@/api";
 import Sidebar from "./Sidebar";
 import sbstyles from "./Sidebar.module.css";
 import Details from "../components/Details";
-import Thread from "../components/Thread";
-import { Type } from "@/enum";
+import { Type, ThreadType, CategoryType } from "@/enum";
+import Threads from "@/components/Threads";
 import styles from "./Category.module.css";
+import Thread from "@/components/Thread";
 
 export default function Category({
   type,
 }: Readonly<{
   type: Type;
 }>) {
+
+  const params = useParams();
+  const title = params.category as string;
+
+  const [category, setCategory] = useState<CategoryType>();
+  const [threads, setThreads] = useState<ThreadType[]>([]);
+  useEffect(() => {
+    getCategoryByTypeAndTitle(type, title).then(setCategory);
+  }, [type, title]);
+  useEffect(() => {
+    category && getThreadsByCategoryId(category.id).then(setThreads);
+  }, [category]);
+
   return (
     <Sidebar
       articleContent={<>
         <div className={`${styles.top} ${sbstyles.btn}`}>
-          <h1>#Category</h1>
+          <h1>#{category?.title}</h1>
           <FontAwesomeIcon icon={faThumbTack} />
         </div>
         <Details
@@ -30,14 +48,7 @@ export default function Category({
           ]]}
           rightFilter={["Score", ["All", "Unpopular", "Popular"]]}
         />
-        <div className={styles.threads}>
-          <Thread type={type} />
-          <Thread type={type} />
-          <Thread type={type} />
-          <Thread type={type} />
-          <Thread type={type} />
-          <Thread type={type} />
-        </div>
+        <Threads data={threads} />
       </>}
       asideContent={<>
         <div className={sbstyles.stats}>
@@ -57,7 +68,7 @@ export default function Category({
         </div>
         <div className={sbstyles.featured}>
           <h2>Featured Thread</h2>
-          <Thread type={type} />
+          {threads.length > 0 && <Thread data={threads[Math.floor(Math.random() * ((threads.length - 1) + 1))]} />}
         </div>
       </>}
     />
