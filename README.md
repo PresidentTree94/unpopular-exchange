@@ -4,9 +4,9 @@ A Next.js and TypeScript web application where users can share unpopular opinion
 ## Overview
 Unpopular Exchange is my first project built with Next.js and TypeScript. The platform encourages authentic discussion by allowing users to post their controversial thoughts and gauge community sentiment through a simple voting system.
 
-**Current Status:** MVP with local JSON data storage
-**Planned Migration:** Vercel deployment with Supabase database
-**Sample Data:** 3 users with 4 discussion threads (2 opinions, 2 pet peeves)
+**Current Status:** MVP with local JSON data storage\
+**Planned Migration:** Vercel deployment with Supabase database\
+**Sample Data:** 3 users, 4 categories (1 shared), and 4 discussion threads (2 opinions, 2 pet peeves)\
 
 ## Core Features
 ### Discussion Threads
@@ -27,7 +27,7 @@ The heart of the platform where users share their thoughts and engage with the c
 #### User Identity & Privacy
 - **Nicknames:** Users can post anonymously using aliases to avoid judgment on sensitive topics
 - **Consistency:** One identity per thread (including all comments within that thread)
-- **Privacy:** User profiles remain private; nicknames only help users find related content
+- **Privacy:** User profiles remain private; names only help users find related content
 
 #### Voting System
 - **Simple Choice:** Agree or Disagree options
@@ -58,7 +58,7 @@ Private dashboards for tracking engagement and measuring unpopularity.
 
 #### Unpopular Score Breakdown
 - **Scope Options:** Calculate from owned threads only or all participated threads
-- **Category Analysis:** Detailed breakdown by opinion types and topics
+- **Category Analysis:** Detailed breakdown by opinions and pet peeves and their topics
 - **Visual Representation:** Red and blue pie chart showing popular vs. unpopular ratio
 
 ### Personalized Feed
