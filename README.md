@@ -6,7 +6,7 @@ Unpopular Exchange is my first project built with Next.js and TypeScript. The pl
 
 **Current Status:** MVP with local JSON data storage\
 **Planned Migration:** Vercel deployment with Supabase database\
-**Sample Data:** 3 users, 4 categories (1 shared), and 4 discussion threads (2 opinions, 2 pet peeves)\
+**Sample Data:** 3 users, 4 categories (1 shared), and 4 discussion threads (2 opinions, 2 pet peeves)
 
 ## Core Features
 ### Discussion Threads
@@ -62,13 +62,7 @@ Private dashboards for tracking engagement and measuring unpopularity.
 - **Visual Representation:** Red and blue pie chart showing popular vs. unpopular ratio
 
 ### Personalized Feed
-Customizable content discovery based on user interests.
-
-#### Feed Control
-- **Category Subscriptions:** Follow specific topics of interest
-- **Default Behavior:** No subscriptions = see all categories
-- **Subscription Management:** View current subscriptions with links to category pages
-- **Easy Updates:** Subscribe/unsubscribe directly from category pages
+Users have full control over their content feed through category subscriptions. Users can subscribe to topics they're interested in, or leave all categories unsubscribed to see everything. Subscribed categories are listed on the feed page with links to their respective pages, while subscription management happens on individual category pages.
 
 ## Planned Features
 The following enhancements are scheduled for future releases:
