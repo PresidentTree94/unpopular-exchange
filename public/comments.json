@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "threadId": 4,
+    "parentId": 0,
+    "userId": 2,
+    "replyId": 0,
+    "timestamp": "2025-08-12T19:15:00.000Z",
+    "message": "That happened to me at my last job! I had to start putting ice packs in my lunch box so I could leave it at my desk!"
+  },
+  {
+    "id": 2,
+    "threadId": 4,
+    "parentId": 1,
+    "userId": 1,
+    "replyId": 1,
+    "timestamp": "2025-08-12T19:30:00.000Z",
+    "message": "Same here! It makes you wonder who raised (or didn't raise) them into thinking no one would be bothered by this. Is that the goal or are they just plain lazy?"
+  },
+  {
+    "id": 3,
+    "threadId": 1,
+    "parentId": 0,
+    "userId": 3,
+    "replyId": 0,
+    "timestamp": "2025-08-09T19:30:00.000Z",
+    "message": "Who eats pinapple on pizza? No one I know does. It's disgusting!"
+  },
+  {
+    "id": 4, 
+    "threadId": 4,
+    "parentId": 1,
+    "userId": 3,
+    "replyId": 2,
+    "timestamp": "2025-08-12T19:45:00.000Z",
+    "message": "Definitely laziness. Why go out to buy their own food when they can find something appetizing inside the fridge?"
+  },
+  {
+    "id": 5,
+    "threadId": 2,
+    "parentId": 0,
+    "userId": 1,
+    "replyId": 0,
+    "timestamp": "2025-08-10T20:00:00.000Z",
+    "message": "It's not just to marry your husband, but to bring family together to eat, dance, and congradulate you!"
+  }
+]

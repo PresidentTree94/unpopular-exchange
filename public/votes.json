@@ -1,0 +1,32 @@
+[
+  {
+    "userId": 1,
+    "threadId": 1,
+    "vote": "agree"
+  },
+  {
+    "userId": 2,
+    "threadId": 1,
+    "vote": "disagree"
+  },
+  {
+    "userId": 3,
+    "threadId": 1,
+    "vote": "disagree"
+  },
+  {
+    "userId": 1,
+    "threadId": 4,
+    "vote": "agree"
+  },
+  {
+    "userId": 2,
+    "threadId": 4,
+    "vote": "agree"
+  },
+  {
+    "userId": 2,
+    "threadId": 3,
+    "vote": "agree"
+  }
+]

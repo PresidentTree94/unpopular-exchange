@@ -1,5 +1,8 @@
+import Categories from "@/shared/Categories";
+import { Type } from "@/enum";
+
 export default function OpinionMain() {
   return (
-    <div>OPINIONS</div>
+    <Categories type={Type.OPINIONS} />
   );
 }

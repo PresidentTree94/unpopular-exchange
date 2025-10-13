@@ -36,4 +36,12 @@
   span {
     @apply bg-linear-to-r from-unpopular via-[rgb(166,77,166)] to-popular rounded-lg py-[0.125rem] px-1 font-semibold uppercase;
   }
+
+  nav a:not(nav a:first-of-type) {
+    @apply px-1 rounded-lg;
+  }
+
+  nav a.active {
+    @apply font-semibold;
+  }
 }
