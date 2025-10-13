@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: rgb(0, 0, 0);
+  --color-secondary: rgb(77, 77, 77);
+  --color-tertiary: rgb(38, 38, 38);
+  --color-text: rgb(255, 255, 255);
+  --color-unpopular: rgb(255, 77, 77);
+  --color-popular: rgb(77, 77, 255);
+  --font-display: var(--font-display);
+  --text-h-one: 2.5rem;
+  --text-h-two: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply font-display text-base bg-primary text-text;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  h1 {
+    @apply text-h-one;
+  }
+
+  h2 {
+    @apply text-h-two;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h1, h2, h3 {
+    @apply uppercase font-bold;
+  }
+
+  span {
+    @apply bg-linear-to-r from-unpopular via-[rgb(166,77,166)] to-popular rounded-lg py-[0.125rem] px-1 font-semibold uppercase;
+  }
 }
