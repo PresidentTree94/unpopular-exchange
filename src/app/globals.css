@@ -37,11 +37,27 @@
     @apply bg-linear-to-r from-unpopular via-[rgb(166,77,166)] to-popular rounded-lg py-[0.125rem] px-1 font-semibold uppercase;
   }
 
-  nav a:not(nav a:first-of-type) {
+  nav a:not(nav > a:first-of-type) {
     @apply px-1 rounded-lg;
+  }
+
+  nav div a:hover, nav div a.active {
+    @apply bg-secondary;
   }
 
   nav a.active {
     @apply font-semibold;
+  }
+
+  button, input[type="submit"] {
+    @apply bg-tertiary text-text px-4;
+  }
+
+  button, select, input[type="submit"] {
+    @apply rounded-lg py-1;
+  }
+
+  input[type="text"], textarea {
+    @apply bg-text placeholder-gray-500 w-full py-1 px-2 rounded-lg;
   }
 }
