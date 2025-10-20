@@ -61,9 +61,6 @@ Private dashboards for tracking engagement and measuring unpopularity.
 - **Category Analysis:** Detailed breakdown by opinions and pet peeves and their topics
 - **Visual Representation:** Red and blue pie chart showing popular vs. unpopular ratio
 
-### Personalized Feed
-Users have full control over their content feed through category subscriptions. Users can subscribe to topics they're interested in, or leave all categories unsubscribed to see everything. Subscribed categories are listed on the feed page with links to their respective pages, while subscription management happens on individual category pages.
-
 ## Planned Features
 The following enhancements are scheduled for future releases:
 
