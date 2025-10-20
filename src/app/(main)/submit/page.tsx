@@ -5,8 +5,8 @@ export default function Submit() {
         <div>
           <h3 className="mb-1">Type</h3>
           <div className="flex gap-2">
-            <button>Opinion</button>
-            <button>Pet Peeve</button>
+            <button className="hover:bg-unpopular">Opinion</button>
+            <button className="hover:bg-popular">Pet Peeve</button>
           </div>
         </div>
         <div>

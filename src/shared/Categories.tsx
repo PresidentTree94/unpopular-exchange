@@ -23,6 +23,10 @@ export default function Categories({
         <h3>#Title</h3>
         <p>000 Discussions</p>
       </a>
+      <a className={`bg-secondary aspect-square flex flex-col justify-center items-center rounded-xl p-4 ${type == Type.OPINIONS ? "hover:bg-unpopular" : "hover:bg-popular"}`}>
+        <h3>#Title</h3>
+        <p>000 Discussions</p>
+      </a>
     </section>
   );
 }

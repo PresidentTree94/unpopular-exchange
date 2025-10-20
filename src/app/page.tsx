@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main className="text-center p-16">
       <div>
-        <h1><span className="py-1 px-2 font-bold">Unpopular</span> Exchange</h1>
+        <h1><span className="px-2 font-bold">Unpopular</span> Exchange</h1>
         <i>Where your most controversial thought might just be... mainstream.</i>
       </div>
       <div>
