@@ -80,8 +80,8 @@ For administer engagement for the community and possibly input from them.
 #### Blog Preview
 - **Title:** The title of the blog post
 - **Pin:** Pinned blog posts are tagged
-- **Type:** What kind of post it is
-- **Date:** The publish (or updated) date
+- **Type:** The topic of the blog post
+- **Date:** The publish (or update) date
 
 ## Planned Features
 The following enhancements are scheduled for future releases:
