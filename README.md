@@ -61,6 +61,28 @@ Private dashboards for tracking engagement and measuring unpopularity.
 - **Category Analysis:** Detailed breakdown by opinions and pet peeves and their topics
 - **Visual Representation:** Red and blue pie chart showing popular vs. unpopular ratio
 
+### Activity Page
+For icon-based notifications and user and platform statistics.
+
+#### Notifications
+- **Paperclip:** New blog posts
+- **Gavel:** Votes on a user's thread
+- **Thumbtack:** Posts to subscribed categories
+- **Arrow:** Replies to threads and messages
+
+#### Statistics
+- **Your Stats:** Lists cumulative user threads, comments, and votes
+- **Platform Statistics:** Lists cumulative (or daily) platform threads, comments, and votes.
+
+### Blog Page
+For administer engagement for the community and possibly input from them.
+
+#### Blog Preview
+- **Title:** The title of the blog post
+- **Pin:** Pinned blog posts are tagged
+- **Type:** What kind of post it is
+- **Date:** The publish (or updated) date
+
 ## Planned Features
 The following enhancements are scheduled for future releases:
 
