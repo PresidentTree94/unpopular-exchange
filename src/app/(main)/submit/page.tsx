@@ -1,6 +1,6 @@
 export default function Submit() {
   return (
-    <form className="bg-secondary p-4 rounded-xl flex flex-col">
+    <form className="box flex flex-col">
       <div className="flex justify-evenly text-center">
         <div>
           <h3 className="mb-1">Type</h3>

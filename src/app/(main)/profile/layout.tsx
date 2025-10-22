@@ -7,7 +7,7 @@ export default function ProfileLayout({
 }>) {
   return (
     <>
-      <header className="bg-secondary p-4 rounded-xl flex text-center">
+      <header className="box flex text-center">
         <div>
           <img src="https://placehold.co/100x100" className="rounded-full w-36 mb-4 m-auto" />
           <h3>AccountName</h3>

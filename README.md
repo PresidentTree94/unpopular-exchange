@@ -2,7 +2,7 @@
 A Next.js web application where users can share unpopular opinions and pet peeves, then discover whether their thoughts are truly unconventional or surprisingly mainstream.
 
 ## Overview
-Unpopular Exchange is my first project built with Next.js and TypeScript. The platform encourages authentic discussion by allowing users to post their controversial thoughts and gauge community sentiment through a simple voting system.
+Unpopular Exchange is my first project built with Next.js. The platform encourages authentic discussion by allowing users to post their controversial thoughts and gauge community sentiment through a simple voting system.
 
 **Current Status:** MVP with local JSON data storage\
 **Planned Migration:** Vercel deployment with Supabase database\

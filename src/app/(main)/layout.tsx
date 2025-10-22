@@ -17,6 +17,8 @@ export default function NavLayout({
         <Link href="/opinions" className={`${pathname === "/opinions" ? "active bg-unpopular" : ""} col-1 row-1 justify-self-end hover:bg-unpopular`}>Opinions</Link>
         <Link href="/peeves" className={`${pathname === "/peeves" ? "active bg-popular" : ""} col-3 row-1 justify-self-start hover:bg-popular`}>Pet Peeves</Link>
         <div className="col-span-full flex justify-evenly">
+          <Link href="/blog" className={pathname === "/blog" ? "active" : ""}>Blog</Link>
+          <Link href="/activity" className={pathname === "/activity" ? "active" : ""}>Activity</Link>
           <Link href="/profile" className={pathname.startsWith("/profile") ? "active" : ""}>Profile</Link>
           <Link href="/submit" className={pathname === "/submit" ? "active" : ""}>Submit</Link>
         </div>

@@ -65,3 +65,13 @@
     @apply grow border-b border-dotted;
   }
 }
+
+@layer components {
+  .box {
+    @apply bg-secondary p-4 rounded-xl;
+  }
+
+  .tag {
+    @apply bg-tertiary rounded-lg px-1 font-semibold;
+  }
+}
