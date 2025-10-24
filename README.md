@@ -89,15 +89,13 @@ The following enhancements are scheduled for future releases:
 - **Notifications:** Real-time updates for votes, comments, and replies
 - **User Submission:** Threads and comment postings
 - **User Accounts:** Full authentication and profile management system
-- **Blog Page:** Announcements and FAQs
 - **Feed Page:** Curated threads from subscribed categories
-- **Activity Page:** Notifications for blog posts, replies, subscriptions, and votes
 - **Settings Page:** Personalized preferences and account management
 
 ## Future Possibilities
 *Unpopular Exchange* could become a sibling site to similar sites under a parent domain like *The Honest Web*. The sibling sites could include:
 
-- **Unpopular Exchange:** Share and vote on unpopular opinions and pet peeves.
-- **Could Be Better:** Reflect on things that didn't live up to their potential.
-- **Actually Amazing:** Celebrate things that exceeded expectations or are underrated.
-- **Why Is This A Thing?:** Question cultural norms, trends, or baffling behaviors. 
+- **Unpopular Exchange:** Share and vote on unpopular opinions and pet peeves, unpopular <-> popular.
+- **Could Be Better:** Reflect on things that didn't live up to their potential, forgivable <-> fixable.
+- **Actually Amazing:** Celebrate things that exceeded expectations or are underrated, overrated <-> underrated.
+- **Why Is This A Thing?:** Question cultural norms, trends, or baffling behaviors, strange <-> sensible. 

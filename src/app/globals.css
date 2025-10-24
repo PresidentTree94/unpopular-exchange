@@ -71,6 +71,10 @@
     @apply bg-secondary p-4 rounded-xl;
   }
 
+  .bordered {
+    @apply bg-tertiary border-secondary;
+  }
+
   .tag {
     @apply bg-tertiary rounded-lg px-1 font-semibold;
   }
