@@ -2,7 +2,7 @@ export default function Score() {
   return (
     <>
       <h2 className="text-center">Unpopular Score</h2>
-      <i className="text-center">A pie chart of a user's popular and unpopular opinions and pet peeves will be here.</i>
+      <i className="text-center">A pie chart of a user&apos;s popular and unpopular opinions and pet peeves will be here.</i>
       <ul>
         <li className="uppercase flex items-end gap-1 leading-none">Opinions<hr/>00%</li>
         <ul className="ml-4">
