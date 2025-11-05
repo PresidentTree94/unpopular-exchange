@@ -37,11 +37,11 @@
     @apply bg-linear-to-r from-unpopular via-[rgb(166,77,166)] to-popular rounded-lg px-1 font-semibold uppercase inline-block;
   }
 
-  nav a:not(nav > a:first-of-type) {
+  nav a:not(nav > div:first-of-type a) {
     @apply px-1 rounded-lg;
   }
 
-  nav div a:hover, nav div a.active {
+  nav div:last-of-type a:hover, nav div a.active {
     @apply bg-secondary;
   }
 
@@ -63,6 +63,10 @@
 
   hr {
     @apply grow border-b border-dotted;
+  }
+
+  main > * {
+    width: max(14rem, 100%);
   }
 }
 
