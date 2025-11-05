@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="text-center p-16">
@@ -30,6 +32,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <p className="mt-4 font-bold text-xl">UNFINISHED: <Link href="/profile" className="underline">START HERE</Link>.</p>
     </main>
   );
 }
