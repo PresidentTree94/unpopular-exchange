@@ -23,8 +23,8 @@ export default function NavLayout({
           <Link href="/" className="uppercase font-semibold w-min text-center"><span>Unpopular</span> Exchange</Link>
           <FontAwesomeIcon icon={faCircleDown} className={`${isOpen ? "rotate-180": ""} sm:!hidden transition-transform !h-8 !w-auto hover:cursor-pointer`} onClick={toggleMenu} />
         </div>
-        <Link href="/opinions" className={`${pathname === "/opinions" ? "active bg-unpopular" : ""} col-1 row-1 justify-self-end hover:bg-unpopular`} onClick={closeMenu}>Opinions</Link>
-        <Link href="/peeves" className={`${pathname === "/peeves" ? "active bg-popular" : ""} col-3 row-1 justify-self-start hover:bg-popular`} onClick={closeMenu}>Pet Peeves</Link>
+        <Link href="/opinions" className={`${pathname.startsWith("/opinions") ? "active bg-unpopular" : ""} col-1 row-1 justify-self-end hover:bg-unpopular`} onClick={closeMenu}>Opinions</Link>
+        <Link href="/peeves" className={`${pathname.startsWith("/peeves") ? "active bg-popular" : ""} col-3 row-1 justify-self-start hover:bg-popular`} onClick={closeMenu}>Pet Peeves</Link>
         <div className={`col-span-full flex flex-col sm:flex-row items-center gap-4 sm:gap-0 sm:justify-evenly`}>
           <Link href="/blog" className={pathname === "/blog" ? "active" : ""} onClick={closeMenu}>Blog</Link>
           <Link href="/feed" className={pathname === "/feed" ? "active": ""} onClick={closeMenu}>Feed</Link>
