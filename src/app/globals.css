@@ -10,6 +10,9 @@
   --font-display: var(--font-display);
   --text-h-one: 2.5rem;
   --text-h-two: 2rem;
+  --breakpoint-plg: 52.5rem;
+  --breakpoint-pmd: 38.5rem;
+  --breakpoint-psm: 27.5rem;
 }
 
 @layer base {

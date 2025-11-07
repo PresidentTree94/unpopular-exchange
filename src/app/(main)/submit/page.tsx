@@ -1,17 +1,17 @@
 export default function Submit() {
   return (
     <form className="box flex flex-col">
-      <div className="flex justify-evenly text-center">
+      <div className="flex justify-evenly text-center flex-wrap gap-4">
         <div>
           <h3 className="mb-1">Type</h3>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             <button className="hover:bg-unpopular">Opinion</button>
             <button className="hover:bg-popular">Pet Peeve</button>
           </div>
         </div>
         <div>
           <h3 className="mb-1">Category</h3>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             <select className="bg-text text-primary">
               <option>Select Category</option>
               <option>Select Category</option>
