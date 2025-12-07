@@ -3,10 +3,12 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faWaveSquare } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
+import { useNavbar } from "@/contexts/NavbarContext";
 
 export default function Navbar() {
 
   const pathname = usePathname();
+  const { boltColor, borderColor } = useNavbar();
 
   let brdrClr, boltClr;
   switch (true) {
@@ -23,8 +25,8 @@ export default function Navbar() {
       brdrClr = "border-rose-500/20";
       break;
     case pathname === "/submit":
-      boltClr = "text-orange-400";
-      brdrClr = "border-orange-500/20";
+      boltClr = boltColor;
+      brdrClr = borderColor;
       break;
     default:
       boltClr = "text-yellow-400";

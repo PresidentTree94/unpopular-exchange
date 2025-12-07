@@ -13,7 +13,7 @@ export default function Takes({
 
   const pathname = usePathname();
 
-  let btnClr = "bg-orange-600"
+  let btnClr = "bg-yellow-600"
   if (pathname === "/opinions") {
     btnClr = "bg-indigo-600";
   } else if (pathname === "/peeves") {

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
-import Navbar from "@/components/Navbar";
 import "./globals.css";
+import { NavbarProvider } from "@/contexts/NavbarContext";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Unpopular Exchange",
@@ -15,13 +16,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="p-8 flex flex-col gap-8 max-w-7xl m-auto">
-          {children}
-        </main>
+        <NavbarProvider>
+          <Navbar />
+          <main className="p-8 flex flex-col gap-8 max-w-7xl m-auto">
+            {children}
+          </main>
+        </NavbarProvider>
       </body>
     </html>
   );

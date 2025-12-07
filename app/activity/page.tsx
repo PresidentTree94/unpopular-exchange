@@ -1,12 +1,10 @@
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faWaveSquare, faUser, faHashtag, faChartSimple, faArrowTrendUp, faUserGroup, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faWaveSquare, faUser, faHashtag, faChartSimple, faArrowTrendUp, faUserGroup, faMessage, faStar, faFilter } from "@fortawesome/free-solid-svg-icons";
 import Preview from "@/components/Preview";
 
 export default function Activity() {
   return (
     <>
-      <Link href="/" className="text-base flex items-center gap-2 text-emerald-400 font-semibold"><FontAwesomeIcon icon={faArrowLeft} className="!w-auto !h-5" />Back to All Takes</Link>
       <h2 className="text-4xl font-extrabold text-gray-100 flex items-center gap-3"><FontAwesomeIcon icon={faWaveSquare} className="!w-auto !h-8 text-emerald-400" />My Activity Tracker</h2>
       <article className="box p-8 flex flex-col gap-8">
         <div className="card flex items-center justify-between gap-6">
@@ -16,10 +14,10 @@ export default function Activity() {
           </div>
           <p className="text-right text-xs text-rose-400 font-normal">This ID is for tracking your activity and is not publically searchable.</p>
         </div>
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 border-b border-gray-700 pb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 border-b border-gray-700 pb-8">
           <div className="card flex items-center gap-4">
             <div className="flex h-full items-center justify-center aspect-square">
-              <FontAwesomeIcon icon={faHashtag} className="!w-auto !h-6 text-indigo-400" />
+              <FontAwesomeIcon icon={faHashtag} className="!w-auto !h-6 text-emerald-400" />
             </div>
             <div>
               <p className="uppercase mb-1 text-gray-400">Takes created</p>
@@ -28,7 +26,7 @@ export default function Activity() {
           </div>
           <div className="card flex items-center gap-4">
             <div className="flex h-full items-center justify-center aspect-square">
-              <FontAwesomeIcon icon={faChartSimple} className="!w-auto !h-6 text-yellow-400" />
+              <FontAwesomeIcon icon={faChartSimple} className="!w-auto !h-6 text-emerald-400" />
             </div>
             <div>
               <p className="uppercase mb-1 text-gray-400">Popularity score</p>
@@ -37,7 +35,7 @@ export default function Activity() {
           </div>
           <div className="card flex items-center gap-4">
             <div className="flex h-full items-center justify-center aspect-square">
-              <FontAwesomeIcon icon={faArrowTrendUp} className="!w-auto !h-6 text-cyan-400" />
+              <FontAwesomeIcon icon={faArrowTrendUp} className="!w-auto !h-6 text-emerald-400" />
             </div>
             <div>
               <p className="uppercase mb-1 text-gray-400">Votes received</p>
@@ -46,10 +44,28 @@ export default function Activity() {
           </div>
           <div className="card flex items-center gap-4">
             <div className="flex h-full items-center justify-center aspect-square">
-              <FontAwesomeIcon icon={faUserGroup} className="!w-auto !h-6 text-purple-400" />
+              <FontAwesomeIcon icon={faUserGroup} className="!w-auto !h-6 text-emerald-400" />
             </div>
             <div>
               <p className="uppercase mb-1 text-gray-400">Votes cast</p>
+              <p className="text-3xl font-extrabold text-gray-100">000</p>
+            </div>
+          </div>
+          <div className="card flex items-center gap-4">
+            <div className="flex h-full items-center justify-center aspect-square">
+              <FontAwesomeIcon icon={faMessage} className="!w-auto !h-6 text-emerald-400" />
+            </div>
+            <div>
+              <p className="uppercase mb-1 text-gray-400">Replies sent</p>
+              <p className="text-3xl font-extrabold text-gray-100">000</p>
+            </div>
+          </div>
+          <div className="card flex items-center gap-4">
+            <div className="flex h-full items-center justify-center aspect-square">
+              <FontAwesomeIcon icon={faStar} className="!w-auto !h-6 text-emerald-400" />
+            </div>
+            <div>
+              <p className="uppercase mb-1 text-gray-400">Favorite Takes</p>
               <p className="text-3xl font-extrabold text-gray-100">000</p>
             </div>
           </div>
@@ -74,6 +90,7 @@ export default function Activity() {
           <button className="text-lg font-bold px-4 py-3 text-gray-400 border-b-4 border-transparent">My Takes (0)</button>
           <button className="text-lg font-bold px-4 py-3 text-gray-400 border-b-4 border-transparent">Replied To (0)</button>
           <button className="text-lg font-bold px-4 py-3 text-gray-400 border-b-4 border-transparent">Voted On (0)</button>
+          <button className="text-lg font-bold px-4 py-3 text-gray-400 border-b-4 border-transparent">Favorites (0)</button>
         </div>
         <div className="space-y-4">
           <Preview />

@@ -26,4 +26,8 @@
   .btn {
     @apply py-1.5 px-3 rounded-full;
   }
+
+  .btn-vote {
+    @apply py-2 px-4 rounded-lg text-white font-bold flex items-center justify-center w-full;
+  }
 }
