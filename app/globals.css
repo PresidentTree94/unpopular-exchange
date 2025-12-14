@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-@theme inline {
-  
-}
-
 @layer base {
   body {
     @apply font-sans text-sm font-medium bg-gray-900 text-gray-300;
@@ -11,6 +7,14 @@
 
   h3 {
     @apply text-xl font-semibold;
+  }
+
+  body > * {
+    @apply overflow-hidden;
+  }
+
+  main > * {
+    @apply w-full min-w-64;
   }
 }
 

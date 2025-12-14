@@ -16,11 +16,11 @@ export default function Discussion() {
     <>
       <div className="box p-8">
         <p className="text-gray-400 flex items-center gap-1"><FontAwesomeIcon icon={faTag} className={`!w-auto !h-4 ${hdClr}`} />Category / <span className="text-gray-300 font-semibold">Topic</span></p>
-        <h1 className="text-3xl font-light text-gray-100 italic my-6">"Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes."</h1>
-        <div className="grid grid-cols-2 gap-4 border-t border-gray-700 pt-6">
-          <div>
+        <h1 className="text-2xl sm:text-3xl font-light text-gray-100 italic my-6">"Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes."</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-700 pt-6">
+          <div className="@container">
             <h3 className="font-bold mb-3">Cast Your Vote</h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col @3xs:flex-row">
               <button className="btn-vote bg-red-600 gap-2"><FontAwesomeIcon icon={faThumbsDown} className="!w-auto !h-5" />Unpopular</button>
               <button className="btn-vote bg-green-600 gap-2"><FontAwesomeIcon icon={faThumbsUp} className="!w-auto !h-5" />Popular</button>
             </div>
@@ -32,9 +32,9 @@ export default function Discussion() {
         </div>
         <p className="text-center mt-4 text-gray-400 font-normal">Total Votes: 000</p>
       </div>
-      <div className={`box p-8 ${brdrClr}`}>
+      <div className={`box p-8 ${brdrClr} @container`}>
         <h2 className={`text-2xl font-bold ${hdClr} flex items-center gap-2 border-b border-gray-700 pb-2`}><FontAwesomeIcon icon={faMessage} className="!w-auto !h-6" />Debate (0 Replies)</h2>
-        <form className="flex gap-2 mt-4 mb-6">
+        <form className="flex flex-col @3xs:flex-row gap-2 mt-4 mb-6">
           <input type="text" placeholder="Got something to say?" className="bg-gray-700 text-gray-100 p-3 flex-1 rounded-lg font-normal" />
           <button className={`${btnClr} text-white rounded-lg flex items-center justify-center h-11 aspect-square`}><FontAwesomeIcon icon={faPaperPlane} className="!w-auto !h-5" /></button>
         </form>
