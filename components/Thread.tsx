@@ -6,6 +6,8 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export default function Thread({
   data,
 }: Readonly<{
