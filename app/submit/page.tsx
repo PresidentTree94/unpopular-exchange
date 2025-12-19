@@ -63,8 +63,6 @@ export default function Submit() {
     setTopic("");
   }
 
-  console.log(topics);
-
   return (
     <div className={`bg-gray-800 p-8 rounded-xl border ${borderColor} space-y-4`}>
       <h2 className={`${headingColor} text-2xl font-bold flex items-center gap-2`}><FontAwesomeIcon icon={faBolt} className="!w-auto !h-6" />Drop Your Unpopular Take</h2>
