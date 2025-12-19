@@ -34,4 +34,8 @@
   .btn-vote {
     @apply py-2 px-4 rounded-lg text-white font-bold flex items-center justify-center w-full;
   }
+
+  .form {
+    @apply bg-gray-700 text-gray-100 border border-gray-600 text-base rounded-lg p-3;
+  }
 }

@@ -5,7 +5,7 @@ export default function Note() {
   return (
     <div className="card flex items-start gap-4">
       {/*Will probably have different colors and icons depending on the notification.*/}
-      <div className="bg-yellow-600 rounded-full w-10 h-10 mt-1 flex items-center justify-center">
+      <div className="bg-orange-600 rounded-full w-10 h-10 mt-1 flex items-center justify-center">
         <FontAwesomeIcon icon={faBell} className="!w-auto !h-5 text-white" />
       </div>
       <div className="flex-1">

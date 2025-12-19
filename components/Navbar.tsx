@@ -17,6 +17,11 @@ export default function Navbar() {
       brdrClr = "border-emerald-500/20";
       lnkClr = "bg-emerald-600";
       break;
+    case pathname === "/notifications":
+      boltClr = "text-orange-400";
+      brdrClr = "border-orange-500/20";
+      lnkClr = "bg-orange-600";
+      break;
     case pathname.startsWith("/opinions"):
       boltClr = "text-indigo-400";
       brdrClr = "border-indigo-500/20";

@@ -3,12 +3,14 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faArrowTrendUp, faClock, faClockRotateLeft, faThumbsDown, faThumbsUp, faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
+import { Take } from "@/types/take";
 import Thread from "@/components/Thread";
 
 export default function Takes({
-  group,
+  group, data = [],
 }: Readonly<{
   group: string;
+  data: Take[];
 }>) {
 
   const pathname = usePathname();
@@ -33,6 +35,8 @@ export default function Takes({
         <button className="btn bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white flex items-center gap-1"><FontAwesomeIcon icon={faThumbsDown} className="!w-auto !h-4" />Most Unpopular</button>
         <button className="btn bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white flex items-center gap-1"><FontAwesomeIcon icon={faThumbsUp} className="!w-auto !h-4" />Most Popular</button>
         <button className="btn bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white flex items-center gap-1"><FontAwesomeIcon icon={faFireFlameCurved} className="!w-auto !h-4" />Most Controversial</button>
+        <button className="btn bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white flex items-center gap-1">Most Votes</button>
+        <button className="btn bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white flex items-center gap-1">Least Votes</button>
       </div>
       {pathname !== "/" && 
         <div className="box p-4">
@@ -46,9 +50,9 @@ export default function Takes({
         </div>
       }
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <Thread />
-        <Thread />
-        <Thread />
+        {data.map((item) => (
+          <Thread key={item.id} data={item} />
+        ))}
       </div>
     </>
   );

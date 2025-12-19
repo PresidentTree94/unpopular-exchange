@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserSecret, faHashtag, faChartSimple, faArrowTrendUp, faUserGroup, faMessage, faStar, faFilter, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "@/components/Tabs";
+import { supabase } from "@/lib/supabaseClient";
 import Preview from "@/components/Preview";
 
-export default function Activity() {
+export default async function Activity() {
 
   const iconDictionary: Record<string, IconDefinition> = {
     "faHashtag": faHashtag,
@@ -22,6 +23,8 @@ export default function Activity() {
     {heading: "Replies sent", icon: iconDictionary["faMessage"], number: "000"},
     {heading: "Favorite takes", icon: iconDictionary["faStar"], number: "000"}
   ]
+
+  const { data } = await supabase.from("takes").select("*");
 
   return (
     <>
@@ -63,11 +66,11 @@ export default function Activity() {
             <button className="btn bg-gray-600">Topic</button>
           </div>
         </div>
-        <Tabs
-          color="border-emerald-400"
-          tabs={["Takes", "Replies", "Votes", "Favorites"]}
-          Item={Preview}
-        />
+        <Tabs color="border-emerald-400" tabs={["Takes", "Replies", "Votes", "Favorites"]}>
+          {data?.map((item) => (
+            <Preview key={item.id} data={item} />
+          ))}
+        </Tabs>
       </article>
     </>
   );

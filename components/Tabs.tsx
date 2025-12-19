@@ -1,9 +1,9 @@
 export default function Tabs({
-  color, tabs, Item,
+  color, tabs, children,
 }: Readonly<{
   color: string;
   tabs: string[];
-  Item: React.ComponentType;
+  children: React.ReactNode;
 }>) {
   return (
     <>
@@ -13,9 +13,7 @@ export default function Tabs({
         ))}
       </div>
       <div className="space-y-4">
-        <Item />
-        <Item />
-        <Item />
+        {children}
       </div>
     </>
   );

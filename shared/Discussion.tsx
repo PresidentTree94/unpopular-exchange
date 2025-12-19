@@ -1,9 +1,12 @@
 "use client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag, faThumbsDown, faThumbsUp, faMessage, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { usePathname } from "next/navigation";
+import { faTag, faEllipsis, faThumbsDown, faThumbsUp, faMessage, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { useParams, usePathname } from "next/navigation";
 import Popularity from "@/components/Popularity";
 import Comment from "@/components/Comment";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { Take } from "@/types/take";
 
 export default function Discussion() {
 
@@ -12,25 +15,47 @@ export default function Discussion() {
   const brdrClr = pathname.startsWith("/opinions") ? "border-indigo-500/50" : "border-rose-500/50";
   const btnClr = pathname.startsWith("/opinions") ? "bg-indigo-600" : "bg-rose-600";
 
+  const [thread, setThread] = useState<Take | null>(null);
+  const { slug } = useParams();
+
+  useEffect(() => {
+    const fetchThread = async () => {
+      const { data } = await supabase.from("takes").select("*").eq("id", slug).single();
+      setThread(data);
+    }
+    fetchThread();
+  }, [slug]);
+
+  const readable = new Date(thread?.timestamp ?? "").toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
   return (
     <>
       <div className="box p-8">
-        <p className="text-gray-400 flex items-center gap-1"><FontAwesomeIcon icon={faTag} className={`!w-auto !h-4 ${hdClr}`} />Category / <span className="text-gray-300 font-semibold">Topic</span></p>
-        <h1 className="text-2xl sm:text-3xl font-light text-gray-100 italic my-6">"Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes. Thread thought for testing purposes."</h1>
+        <div className="flex items-center justify-between text-gray-400 gap-4">
+          <p className="flex items-center gap-1"><FontAwesomeIcon icon={faTag} className={`!w-auto ${hdClr}`} />{thread?.category} / <span className="text-gray-300 font-semibold">{thread?.topic}</span></p>
+          <FontAwesomeIcon icon={faEllipsis} className="!w-auto" />
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-light text-gray-100 italic my-6">"{thread?.take}"</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-700 pt-6">
           <div className="@container">
             <h3 className="font-bold mb-3">Cast Your Vote</h3>
             <div className="flex gap-4 flex-col @3xs:flex-row">
-              <button className="btn-vote bg-red-600 gap-2"><FontAwesomeIcon icon={faThumbsDown} className="!w-auto !h-5" />Unpopular</button>
               <button className="btn-vote bg-green-600 gap-2"><FontAwesomeIcon icon={faThumbsUp} className="!w-auto !h-5" />Popular</button>
+              <button className="btn-vote bg-red-600 gap-2"><FontAwesomeIcon icon={faThumbsDown} className="!w-auto !h-5" />Unpopular</button>
             </div>
           </div>
           <div>
             <h3 className="font-bold mb-3">Current Status</h3>
-            <Popularity />
+            <Popularity unpopular={thread?.unpopular ?? 0} popular={thread?.popular ?? 0} />
           </div>
         </div>
-        <p className="text-center mt-4 text-gray-400 font-normal">Total Votes: 000</p>
+        <p className="text-center mt-4 text-gray-400 font-normal">Total Votes: {(thread?.unpopular ?? 0) + (thread?.popular ?? 0)}</p>
       </div>
       <div className={`box p-8 ${brdrClr} @container`}>
         <h2 className={`text-2xl font-bold ${hdClr} flex items-center gap-2 border-b border-gray-700 pb-2`}><FontAwesomeIcon icon={faMessage} className="!w-auto !h-6" />Debate (0 Replies)</h2>
