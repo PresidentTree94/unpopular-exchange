@@ -1,9 +1,4 @@
-export default function Popularity({
-  unpopular, popular,
-}:Readonly<{
-  unpopular: number;
-  popular: number;
-}>) {
+export default function Popularity({ unpopular, popular }:Readonly<{ unpopular: number; popular: number;}>) {
 
   const totalVotes = unpopular + popular;
   const unpopularPercent = Math.round((unpopular / totalVotes) * 100);

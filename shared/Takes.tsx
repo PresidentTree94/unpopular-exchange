@@ -6,12 +6,7 @@ import { usePathname } from "next/navigation";
 import { Take } from "@/types/take";
 import Thread from "@/components/Thread";
 
-export default function Takes({
-  group, data = [],
-}: Readonly<{
-  group: string;
-  data: Take[];
-}>) {
+export default function Takes({ group, data = [] }: Readonly<{ group: string; data: Take[]; }>) {
 
   const pathname = usePathname();
 

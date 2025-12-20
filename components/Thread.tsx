@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faMessage } from "@fortawesome/free-solid-svg-icons";
 import Popularity from "./Popularity";
 import { Take } from "@/types/take";
-import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import { useVoting } from "@/hooks/useVoting";
 import Voting from "./Voting";
 
 export default function Thread({
@@ -13,20 +12,7 @@ export default function Thread({
   data: Take;
 }>) {
 
-  const [popularCount, setPopularCount] = useState(data.popular);
-  const [unpopularCount, setUnpopularCount] = useState(data.unpopular);
-
-  const increasePopular = async () => {
-    const newCount = popularCount + 1;
-    setPopularCount(newCount);
-    await supabase.from("takes").update({"popular": newCount}).eq("id", data.id);
-  }
-
-  const increaseUnpopular = async () => {
-    const newCount = unpopularCount + 1;
-    setUnpopularCount(newCount);
-    await supabase.from("takes").update({"unpopular": newCount}).eq("id", data.id);
-  }
+  const { popularCount, unpopularCount, increasePopular, increaseUnpopular } = useVoting(data.popular, data.unpopular, data.id);
 
   return (
     <div className="box p-6 flex flex-col justify-between">

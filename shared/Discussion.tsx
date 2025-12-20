@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faEllipsis, faMessage, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useParams, usePathname } from "next/navigation";
@@ -7,6 +7,7 @@ import Comment from "@/components/Comment";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Take } from "@/types/take";
+import { useVoting } from "@/hooks/useVoting";
 import Voting from "@/components/Voting";
 
 export default function Discussion() {
@@ -16,12 +17,10 @@ export default function Discussion() {
   const brdrClr = pathname.startsWith("/opinions") ? "border-indigo-500/50" : "border-rose-500/50";
   const btnClr = pathname.startsWith("/opinions") ? "bg-indigo-600" : "bg-rose-600";
 
-  const [thread, setThread] = useState<Take | null>(null);
   const { slug } = useParams();
+  const [thread, setThread] = useState<Take | null>(null);
 
-  const [popularCount, setPopularCount] = useState<number | null>(null);
-  const [unpopularCount, setUnpopularCount] = useState<number | null>(null);
-
+  // UseState needs "use client", Async cannot use "use client".
   useEffect(() => {
     const fetchThread = async () => {
       const { data } = await supabase.from("takes").select("*").eq("id", slug).single();
@@ -30,24 +29,7 @@ export default function Discussion() {
     fetchThread();
   }, [slug]);
 
-  useEffect(() => {
-    if (thread) {
-      setPopularCount(thread?.popular);
-      setUnpopularCount(thread?.unpopular);
-    }
-  }, [thread]);
-
-  const increasePopular = async () => {
-    const newCount = (popularCount ?? 0) + 1;
-    setPopularCount(newCount);
-    await supabase.from("takes").update({"popular": newCount}).eq("id", thread?.id);
-  }
-
-  const increaseUnpopular = async () => {
-    const newCount = (unpopularCount ?? 0) + 1;
-    setUnpopularCount(newCount);
-    await supabase.from("takes").update({"unpopular": newCount}).eq("id", thread?.id);
-  }
+  const { popularCount, unpopularCount, increasePopular, increaseUnpopular } = useVoting(thread?.popular ?? 0, thread?.unpopular ?? 0, thread?.id ?? 0);
 
   const readable = new Date(thread?.timestamp ?? "").toLocaleString("en-US", {
     month: "short",

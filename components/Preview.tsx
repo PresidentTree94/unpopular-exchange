@@ -1,10 +1,6 @@
 import { Take } from "@/types/take";
 
-export default function Preview({
-  data,
-}:Readonly<{
-  data: Take;
-}>) {
+export default function Preview({ data }:Readonly<{ data: Take; }>) {
 
   const totalVotes = data.unpopular + data.popular;
   const percent = Math.round((data.popular / totalVotes) * 100);
@@ -26,9 +22,9 @@ export default function Preview({
         <p className="font-semibold text-gray-100 line-clamp-3">"{data.take}"</p>
         <p className="text-xs font-normal text-gray-400 mt-1">{data.category} / {data.topic}</p>
       </div>
-      <div>
+      <div className="text-right">
         <p className={`text-xl font-bold ${color}`}>{totalVotes === 0 ? "---" : percent}%</p>
-        <p className="text-xs text-gray-400 text-right">{totalVotes} votes</p>
+        <p className="text-xs text-gray-400">{totalVotes} votes</p>
       </div>
     </div>
   );
