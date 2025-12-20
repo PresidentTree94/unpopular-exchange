@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag, faThumbsDown, faThumbsUp, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { faTag, faMessage } from "@fortawesome/free-solid-svg-icons";
 import Popularity from "./Popularity";
 import { Take } from "@/types/take";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import Voting from "./Voting";
 
 export default function Thread({
   data,
@@ -12,21 +13,19 @@ export default function Thread({
   data: Take;
 }>) {
 
-  const [unpopularCount, setUnpopularCount] = useState(data.unpopular);
   const [popularCount, setPopularCount] = useState(data.popular);
-
-  const increaseUnpopular = async () => {
-    const newCount = unpopularCount + 1;
-    setUnpopularCount(newCount);
-    const { error } = await supabase.from("takes").update({"unpopular": newCount}).eq("id", data.id);
-    if (error) console.error("Supabase update error:", error);
-  }
+  const [unpopularCount, setUnpopularCount] = useState(data.unpopular);
 
   const increasePopular = async () => {
     const newCount = popularCount + 1;
     setPopularCount(newCount);
-    const { error } = await supabase.from("takes").update({"popular": newCount}).eq("id", data.id);
-    if (error) console.error("Supabase update error:", error);
+    await supabase.from("takes").update({"popular": newCount}).eq("id", data.id);
+  }
+
+  const increaseUnpopular = async () => {
+    const newCount = unpopularCount + 1;
+    setUnpopularCount(newCount);
+    await supabase.from("takes").update({"unpopular": newCount}).eq("id", data.id);
   }
 
   return (
@@ -40,11 +39,12 @@ export default function Thread({
         <Popularity unpopular={unpopularCount} popular={popularCount} />
       </div>
       <div className="mt-6 @container">
-        <div className="flex flex-col @3xs:flex-row gap-4 text-white font-bold mb-4">
-          <button className="btn-vote bg-green-600 gap-1 hover:cursor-pointer" onClick={increasePopular}><FontAwesomeIcon icon={faThumbsUp} className="!w-auto !h-4" />Popular</button>
-          <button className="btn-vote bg-red-600 gap-1 hover:cursor-pointer" onClick={increaseUnpopular}><FontAwesomeIcon icon={faThumbsDown} className="!w-auto !h-4" />Unpopular</button>
-        </div>
-        <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread (0)</Link>
+        <Voting
+          gap={1}
+          popularSetter={increasePopular}
+          unpopularSetter={increaseUnpopular}
+        />
+        <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread (0)</Link>
       </div>
     </div>
   );
