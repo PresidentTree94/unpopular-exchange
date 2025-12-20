@@ -22,15 +22,17 @@ export default function Thread({
           <p className="text-gray-500">{unpopularCount + popularCount} votes</p>
         </div>
         <h3 className="font-light text-gray-100 italic my-4 line-clamp-3">"{data.take}"</h3>
-        <Popularity unpopular={unpopularCount} popular={popularCount} />
       </div>
-      <div className="mt-6 @container">
-        <Voting
-          gap={1}
-          popularSetter={increasePopular}
-          unpopularSetter={increaseUnpopular}
-        />
-        <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread (0)</Link>
+      <div className="space-y-6 @container">
+        <Popularity unpopular={unpopularCount} popular={popularCount} />
+        <div>
+          <Voting
+            gap={1}
+            popularSetter={increasePopular}
+            unpopularSetter={increaseUnpopular}
+          />
+          <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread (0)</Link>
+        </div>
       </div>
     </div>
   );

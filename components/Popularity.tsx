@@ -16,7 +16,7 @@ export default function Popularity({ unpopular, popular }:Readonly<{ unpopular: 
   }
 
   return (
-    <>
+    <div>
       <div className="flex justify-between">
         <span className="text-green-400 font-semibold">Popular</span>
         <span className="text-red-400 font-semibold">Unpopular</span>
@@ -27,6 +27,6 @@ export default function Popularity({ unpopular, popular }:Readonly<{ unpopular: 
         </>}
       </div>
       <p className="text-center text-xs text-gray-400">{totalVotes === 0 ? "No votes yet." : <>Unpopular Score: <span className={`font-bold ${scoreColor}`}>{unpopularPercent}%</span></>}</p>
-    </>
+    </div>
   );
 }
