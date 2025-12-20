@@ -20,13 +20,15 @@ export default function Thread({
   const increaseUnpopular = async () => {
     const newCount = unpopularCount + 1;
     setUnpopularCount(newCount);
-    await supabase.from("takes").update({"unpopular": newCount}).eq("id", data.id);
+    const { error } = await supabase.from("takes").update({"unpopular": newCount}).eq("id", data.id);
+    if (error) console.error("Supabase update error:", error);
   }
 
   const increasePopular = async () => {
     const newCount = popularCount + 1;
     setPopularCount(newCount);
-    await supabase.from("takes").update({"popular": newCount}).eq("id", data.id);
+    const { error } = await supabase.from("takes").update({"popular": newCount}).eq("id", data.id);
+    if (error) console.error("Supabase update error:", error);
   }
 
   return (

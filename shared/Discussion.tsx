@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Take } from "@/types/take";
 
-export const revalidate = 0;
-
 export default function Discussion() {
 
   const pathname = usePathname();
