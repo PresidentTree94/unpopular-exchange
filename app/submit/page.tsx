@@ -66,7 +66,7 @@ export default function Submit() {
   return (
     <div className={`bg-gray-800 p-8 rounded-xl border ${borderColor} space-y-4`}>
       <h2 className={`${headingColor} text-2xl font-bold flex items-center gap-2`}><FontAwesomeIcon icon={faBolt} className="!w-auto !h-6" />Drop Your Unpopular Take</h2>
-      <form className="grid grid-cols-2 auto-rows-auto gap-4" onSubmit={handleSubmit}>
+      <form className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-4" onSubmit={handleSubmit}>
         <div className="row-span-2 flex flex-col">
           <label>Your Controversial Thought (Anonymous)</label>
           <textarea className="form flex-1 resize-none mt-1" rows={3} value={take} onChange={(e) => setTake(e.target.value)} required></textarea>

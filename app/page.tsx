@@ -8,6 +8,6 @@ export default async function Home() {
   const { data } = await supabase.from("takes").select("*");
 
   return (
-    <Takes group="Community" data={data ?? []} />
+    <Takes group="Community" threads={data ?? []} />
   );
 }

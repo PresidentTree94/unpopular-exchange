@@ -8,7 +8,7 @@ export default function Notifications() {
     <>
       <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-100 flex items-center gap-3"><FontAwesomeIcon icon={faBell} className="!w-auto !h-8 text-orange-400" />Notifications</h2>
       <article className="box p-8 flex flex-col gap-8 @container">
-        <Tabs color="border-orange-400" tabs={["All", "Replies", "Votes"]}>
+        <Tabs color="border-orange-400" tabs={["All (000)", "Replies (000)", "Votes (000)"]}>
           <Note />
           <Note />
           <Note />

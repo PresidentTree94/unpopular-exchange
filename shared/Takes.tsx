@@ -5,10 +5,13 @@ import { faBolt, faArrowTrendUp, faClock, faClockRotateLeft, faThumbsDown, faThu
 import { usePathname } from "next/navigation";
 import { Take } from "@/types/take";
 import Thread from "@/components/Thread";
+import { supabase } from "@/lib/supabaseClient";
+import { useEffect, useState } from "react";
 
-export default function Takes({ group, data = [] }: Readonly<{ group: string; data: Take[]; }>) {
+export default function Takes({ group, threads = [] }: Readonly<{ group: string; threads: Take[]; }>) {
 
   const pathname = usePathname();
+  const [topics, setTopics] = useState<{topic: string}[]>([]);
 
   let btnClr = "bg-yellow-600"
   if (pathname === "/opinions") {
@@ -16,6 +19,16 @@ export default function Takes({ group, data = [] }: Readonly<{ group: string; da
   } else if (pathname === "/peeves") {
     btnClr = "bg-rose-600";
   }
+
+  useEffect(() => {
+    const fetchTopics = async () => {
+      const category = pathname.replace("/", "").replace(/s$/, "").replace(/^\w/, c => c.toUpperCase());
+      const { data } = await supabase.from("takes").select("topic").eq("category", category);
+      const sorted = (data ?? []).sort((a, b) => a.topic.localeCompare(b.topic));
+      setTopics(sorted ?? []);
+    }
+    fetchTopics();
+  }, [pathname]);
 
   return (
     <>
@@ -37,15 +50,14 @@ export default function Takes({ group, data = [] }: Readonly<{ group: string; da
         <div className="box p-4">
           <h3>Filter by Topic in {group}s</h3>
           <div className="flex flex-wrap gap-3 mt-3">
-            <button className="btn bg-gray-700">Topic</button>
-            <button className="btn bg-gray-700">Topic</button>
-            <button className="btn bg-gray-700">Topic</button>
-            <button className="btn bg-gray-700">Topic</button>
+            {topics.map((t, index) => (
+              <button key={index} className="btn bg-gray-700">{t.topic}</button>
+            ))}
           </div>
         </div>
       }
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data.map((item) => (
+        {threads.map((item) => (
           <Thread key={item.id} data={item} />
         ))}
       </div>

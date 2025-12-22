@@ -15,16 +15,19 @@ export default async function Activity() {
     "faStar": faStar
   }
 
-  const stats = [
-    {heading: "Takes created", icon: iconDictionary["faHashtag"], number: "000"},
-    {heading: "Popularity Score", icon: iconDictionary["faChartSimple"], number: "000"},
-    {heading: "Votes received", icon: iconDictionary["faArrowTrendUp"], number: "000"},
-    {heading: "Votes cast", icon: iconDictionary["faUserGroup"], number: "000"},
-    {heading: "Replies sent", icon: iconDictionary["faMessage"], number: "000"},
-    {heading: "Favorite takes", icon: iconDictionary["faStar"], number: "000"}
-  ]
-
   const { data } = await supabase.from("takes").select("*");
+  const score = Math.round(((data?.filter(item => item.unpopular > item.popular).length ?? 0) / (data?.length ?? 0)) * 100);
+  const received = data?.reduce((sum, item) => sum + item.popular, 0);
+  const cast = data?.reduce((sum, item) => sum + item.unpopular, 0);
+
+  const stats = [
+    {heading: "Takes created", icon: iconDictionary["faHashtag"], number: data?.length},
+    {heading: "Pop Score", icon: iconDictionary["faChartSimple"], number: score + "%"},
+    {heading: "Votes received", icon: iconDictionary["faArrowTrendUp"], number: received},
+    {heading: "Votes cast", icon: iconDictionary["faUserGroup"], number: cast},
+    {heading: "Replies sent", icon: iconDictionary["faMessage"], number: 0},
+    {heading: "Favorite takes", icon: iconDictionary["faStar"], number: 0}
+  ]
 
   return (
     <>

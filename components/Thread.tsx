@@ -5,14 +5,12 @@ import { Take } from "@/types/take";
 import Link from "next/link";
 import { useVoting } from "@/hooks/useVoting";
 import Voting from "./Voting";
+import { supabase } from "@/lib/supabaseClient";
 
-export default function Thread({
-  data,
-}: Readonly<{
-  data: Take;
-}>) {
+export default async function Thread({ data }:Readonly<{ data: Take; }>) {
 
   const { popularCount, unpopularCount, increasePopular, increaseUnpopular } = useVoting(data.popular, data.unpopular, data.id);
+  const { data: comments } = await supabase.from("comments").select("*").eq("take_id", data.id);
 
   return (
     <div className="box p-6 flex flex-col justify-between">
@@ -31,7 +29,7 @@ export default function Thread({
             popularSetter={increasePopular}
             unpopularSetter={increaseUnpopular}
           />
-          <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread (0)</Link>
+          <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread ({comments?.length})</Link>
         </div>
       </div>
     </div>
