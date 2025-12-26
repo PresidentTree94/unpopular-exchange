@@ -11,8 +11,8 @@ export default function Voting({
 
   return (
     <div className="flex flex-col @3xs:flex-row gap-4">
-      <button className={`btn-vote bg-green-600 gap-${gap} hover:cursor-pointer`} onClick={popularSetter}><FontAwesomeIcon icon={faThumbsUp} className={`!w-auto !h-${gap + 3}`} />Popular</button>
-      <button className={`btn-vote bg-red-600 gap-${gap} hover:cursor-pointer`} onClick={unpopularSetter}><FontAwesomeIcon icon={faThumbsDown} className={`!w-auto !h-${gap + 3}`} />Unpopular</button>
+      <button className={`btn-vote bg-green-600 gap-${gap} hover:cursor-pointer`} onClick={popularSetter}><FontAwesomeIcon icon={faThumbsUp} className={`!w-auto !h-${gap + 3}`} />Agree</button>
+      <button className={`btn-vote bg-red-600 gap-${gap} hover:cursor-pointer`} onClick={unpopularSetter}><FontAwesomeIcon icon={faThumbsDown} className={`!w-auto !h-${gap + 3}`} />Disagree</button>
     </div>
   );
 }

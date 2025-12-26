@@ -60,7 +60,7 @@ export default function Navbar() {
   ]
 
   return (
-    <header className={`bg-gray-800 grid grid-cols-6 md:grid-cols-[1fr_repeat(5,auto)] md:items-center md:gap-2 md:px-8 h-14 md:h-17 border-b ${brdrClr} fixed w-full top-0`}>
+    <header className={`bg-gray-800 grid grid-cols-6 md:grid-cols-[1fr_repeat(5,auto)] md:items-center md:gap-2 md:px-8 h-14 md:h-17 border-b ${brdrClr} fixed w-full top-0 z-1`}>
       <h1 className="font-extrabold text-3xl text-white flex items-center gap-2 w-full flex justify-center md:justify-start"><FontAwesomeIcon icon={faBolt} className={`!w-auto !h-5 md:!h-8 ${boltClr}`} /><span className="hidden lg:inline">Unpopular Exchange</span></h1>
       {links.map((l, index) => (
         l.link === "/opinions" || l.link === "/peeves" ?

@@ -41,10 +41,9 @@ export default function Submit() {
   useEffect(() => {
     setBoltColor("text-indigo-400");
     setBorderColor("border-indigo-500/20");
-    setFormBorderColor("border-indigo-500/50");
-    setHeadingColor("text-indigo-400");
-    setButtonColor("bg-indigo-600");
+  }, []);
 
+  useEffect(() => {
     const fetchTopics = async () => {
       const { data } = await supabase.from("takes").select("topic").eq("category", category);
       const sorted = (data ?? []).sort((a, b) => a.topic.localeCompare(b.topic));
@@ -61,6 +60,7 @@ export default function Submit() {
     setTake("");
     setCategory("Opinion");
     setTopic("");
+    setNewTopic("");
   }
 
   return (

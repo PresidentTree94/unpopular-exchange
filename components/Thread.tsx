@@ -2,15 +2,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faMessage } from "@fortawesome/free-solid-svg-icons";
 import Popularity from "./Popularity";
 import { Take } from "@/types/take";
+import { Comment as Com } from "@/types/comment";
 import Link from "next/link";
 import { useVoting } from "@/hooks/useVoting";
 import Voting from "./Voting";
 import { supabase } from "@/lib/supabaseClient";
+import { useEffect, useState } from "react";
 
-export default async function Thread({ data }:Readonly<{ data: Take; }>) {
+export default function Thread({ data }:Readonly<{ data: Take; }>) {
 
   const { popularCount, unpopularCount, increasePopular, increaseUnpopular } = useVoting(data.popular, data.unpopular, data.id);
-  const { data: comments } = await supabase.from("comments").select("*").eq("take_id", data.id);
+  const [messages, setMessages] = useState<Com[]>([]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const { data: comments } = await supabase.from("comments").select("*").eq("take_id", data.id);
+      setMessages(comments ?? []);
+    }
+    fetchComments();
+  }, [data.id]);
 
   return (
     <div className="box p-6 flex flex-col justify-between">
@@ -29,7 +39,7 @@ export default async function Thread({ data }:Readonly<{ data: Take; }>) {
             popularSetter={increasePopular}
             unpopularSetter={increaseUnpopular}
           />
-          <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread ({comments?.length})</Link>
+          <Link href={"/" + data.category.toLowerCase() + "s/" + data.id} className={`bg-gray-700 p-2 font-semibold block text-center w-full rounded-lg mt-4 ${data.category === "Opinion" ? "text-indigo-400" : "text-rose-400"}`}><FontAwesomeIcon icon={faMessage} className="mr-1" />View Thread ({messages?.length})</Link>
         </div>
       </div>
     </div>
