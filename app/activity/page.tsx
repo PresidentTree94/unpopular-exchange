@@ -1,32 +1,43 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUserSecret, faHashtag, faChartSimple, faArrowTrendUp, faUserGroup, faMessage, faStar, faFilter, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faUserSecret, faHashtag, faChartSimple, faArrowTrendUp, faUserGroup, faMessage, faStar, faFilter } from "@fortawesome/free-solid-svg-icons";
 import Tabs from "@/components/Tabs";
 import { supabase } from "@/lib/supabaseClient";
 import Preview from "@/components/Preview";
+import { useEffect, useState } from "react";
+import { Take } from "@/types/take";
+import { Comment } from "@/types/comment";
 
-export default async function Activity() {
+export default function Activity() {
+  const [category, setCategory] = useState<"All" | "Opinion" | "Peeve">("All");
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+  const [takes, setTakes] = useState<Take[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
-  const iconDictionary: Record<string, IconDefinition> = {
-    "faHashtag": faHashtag,
-    "faChartSimple": faChartSimple,
-    "faArrowTrendUp": faArrowTrendUp,
-    "faUserGroup": faUserGroup,
-    "faMessage": faMessage,
-    "faStar": faStar
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data: takes } = await supabase.from("takes").select("*").order("timestamp", { ascending: false });
+      const { data: comments } = await supabase.from("comments").select("*");
+      setTakes(takes ?? []);
+      setComments(comments ?? []);
+    };
+    fetchData();
+  }, []);
 
-  const { data } = await supabase.from("takes").select("*");
-  const score = Math.round(((data?.filter(item => item.unpopular > item.popular).length ?? 0) / (data?.length ?? 0)) * 100);
-  const received = data?.reduce((sum, item) => sum + item.popular, 0);
-  const cast = data?.reduce((sum, item) => sum + item.unpopular, 0);
+  const topics = category === "All" ? [] : [...new Set(takes.filter(t => t.category == category).map(t => t.topic))].sort();
+  const filtered = takes.filter(t => (category === "All" || t.category === category) && (!selectedTopic || t.topic === selectedTopic));
+
+  const score = Math.round(((takes?.filter(item => item.unpopular > item.popular).length ?? 0) / (takes?.length ?? 0)) * 100);
+  const received = takes?.reduce((sum, item) => sum + item.popular, 0);
+  const cast = takes?.reduce((sum, item) => sum + item.unpopular, 0);
 
   const stats = [
-    {heading: "Takes created", icon: iconDictionary["faHashtag"], number: data?.length},
-    {heading: "Pop Score", icon: iconDictionary["faChartSimple"], number: score + "%"},
-    {heading: "Votes received", icon: iconDictionary["faArrowTrendUp"], number: received},
-    {heading: "Votes cast", icon: iconDictionary["faUserGroup"], number: cast},
-    {heading: "Replies sent", icon: iconDictionary["faMessage"], number: 0},
-    {heading: "Favorite takes", icon: iconDictionary["faStar"], number: 0}
+    {heading: "Takes created", icon: faHashtag, number: takes?.length},
+    {heading: "Pop Score", icon: faChartSimple, number: score + "%"},
+    {heading: "Votes received", icon: faArrowTrendUp, number: received},
+    {heading: "Votes cast", icon: faUserGroup, number: cast},
+    {heading: "Replies sent", icon: faMessage, number: comments?.length},
+    {heading: "Favorite takes", icon: faStar, number: 0}
   ]
 
   return (
@@ -57,20 +68,24 @@ export default async function Activity() {
           <h3 className="flex items-center gap-2"><FontAwesomeIcon icon={faFilter} className="!w-auto !h-5 text-emerald-400" />Filter Your Activity</h3>
           <p className="text-gray-400 mt-4">Category:</p>
           <div className="flex flex-wrap gap-2 mt-2">
-            <button className="btn bg-gray-600">All</button>
-            <button className="btn bg-gray-600">Opinions</button>
-            <button className="btn bg-gray-600">Pet Peeves</button>
+            {["All", "Opinion", "Peeve"].map((c, index) => (
+              <button key={index} onClick={() => {setCategory(c as any); setSelectedTopic(null);}} className={`btn ${category === c ? "bg-emerald-600 text-white" : "bg-gray-600"}`}>{c === "Peeve" ? "Pet Peeve" : c}</button>
+            ))}
           </div>
-          {/*Not visible when all is selected.*/}
-          <p className="text-gray-400 mt-4">Topic:</p>
-          <div className="flex flex-wrap gap-2 mt-2">
-            <button className="btn bg-gray-600">Topic</button>
-            <button className="btn bg-gray-600">Topic</button>
-            <button className="btn bg-gray-600">Topic</button>
-          </div>
+          {category !== "All" &&
+            <>
+              <p className="text-gray-400 mt-4">Topic:</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <button onClick={() => setSelectedTopic(null)} className={`btn ${selectedTopic === null ? "bg-emerald-600 text-white" : "bg-gray-600"}`}>All</button>
+                {topics.map((t, index) => (
+                  <button key={index} onClick={() => setSelectedTopic(t)} className={`btn ${selectedTopic === t ? "bg-emerald-600 text-white" : "bg-gray-600"}`}>{t}</button>
+                ))}
+              </div>
+            </>
+          }
         </div>
         <Tabs color="border-emerald-400" tabs={["Takes", "Replies", "Votes", "Favorites"]}>
-          {data?.map((item) => (
+          {filtered?.map((item) => (
             <Preview key={item.id} data={item} />
           ))}
         </Tabs>

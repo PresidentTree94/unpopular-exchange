@@ -1,29 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb, faThumbsDown, faThumbsUp, faUserSecret, faChartSimple, faComments, faFireFlameCurved, faCommentDots, faBug, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faLightbulb, faThumbsDown, faThumbsUp, faUserSecret, faChartSimple, faComments, faFireFlameCurved, faCommentDots, faBug } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function About() {
 
-  const iconDictionary: Record<string, IconDefinition> = {
-    "faUserSecret": faUserSecret,
-    "faThumbsUp": faThumbsUp,
-    "faChartSimple": faChartSimple,
-    "faComments": faComments,
-    "faThumbsDown": faThumbsDown,
-    "faFireFlameCurved": faFireFlameCurved
-  }
-
   const workCards = [
-    {heading: "Submit Anonymously", icon: iconDictionary["faUserSecret"], text: "Share your controversial opinions or pet peeves without revealing your identity. No judgment, just honest takes."},
-    {heading: "Community Votes", icon: iconDictionary["faThumbsUp"], text: <>Users vote whether they think your take is <span className="text-green-400 font-semibold">Popular</span> or <span className="text-red-400 font-semibold">Unpopular</span>.</>},
-    {heading: "Get Your Score", icon: iconDictionary["faChartSimple"], text: "Watch as your take gets a popularity score. Will you be vindicated or surprised by the results?"},
-    {heading: "Join the Debate", icon: iconDictionary["faComments"], text: "Dive into discussions, defend your position, or challenge others. Every take has a story."}
+    {heading: "Submit Anonymously", icon: faUserSecret, text: "Share your controversial opinions or pet peeves without revealing your identity. No judgment, just honest takes."},
+    {heading: "Community Votes", icon: faThumbsUp, text: <>Users vote whether they think your take is <span className="text-green-400 font-semibold">Popular</span> or <span className="text-red-400 font-semibold">Unpopular</span>.</>},
+    {heading: "Get Your Score", icon: faChartSimple, text: "Watch as your take gets a popularity score. Will you be vindicated or surprised by the results?"},
+    {heading: "Join the Debate", icon: faComments, text: "Dive into discussions, defend your position, or challenge others. Every take has a story."}
   ]
 
   const scores = [
-    {score: "Unpopular (0-40%)", icon: iconDictionary["faThumbsDown"], color: "bg-red-600", text: "Congratulations! Your take truly goes against the grain. You're in the minority."},
-    {score: "Controversial (41-59%)", icon: iconDictionary["faFireFlameCurved"], color: "bg-yellow-600", text: "The community is split! Your take is dividing opinions right down the middle."},
-    {score: "Popular (60-100%)", icon: iconDictionary["faThumbsUp"], color: "bg-green-600", text: "Surprise! What you thought was controversial is actually pretty mainstream."}
+    {score: "Unpopular (0-40%)", icon: faThumbsDown, color: "bg-red-600", text: "Congratulations! Your take truly goes against the grain. You're in the minority."},
+    {score: "Controversial (41-59%)", icon: faFireFlameCurved, color: "bg-yellow-600", text: "The community is split! Your take is dividing opinions right down the middle."},
+    {score: "Popular (60-100%)", icon: faThumbsUp, color: "bg-green-600", text: "Surprise! What you thought was controversial is actually pretty mainstream."}
   ]
 
   return (

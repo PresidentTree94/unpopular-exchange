@@ -28,7 +28,7 @@
   }
 
   .btn {
-    @apply py-1.5 px-3 rounded-full;
+    @apply py-1.5 px-3 rounded-full hover:cursor-pointer;
   }
 
   .btn-vote {

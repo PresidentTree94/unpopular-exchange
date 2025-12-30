@@ -7,7 +7,6 @@ import { supabase } from "@/lib/supabaseClient";
 export default function Comment({ data, onNewComment }:Readonly<{ data: Com; onNewComment: () => void; }>) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {setIsOpen(!isOpen);};
   const [content, setContent] = useState("");
 
   const readable = new Date(data.timestamp).toLocaleString("en-US", {
@@ -18,19 +17,30 @@ export default function Comment({ data, onNewComment }:Readonly<{ data: Com; onN
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await supabase.from("comments").insert([
-      { take_id: data.take_id, parent_id: data.parent_id === null ? data.id : data.parent_id, reply_id: data.parent_id === null ? null : data.id, content: content }
+      { take_id: data.take_id, parent_id: data.parent_id ?? data.id, reply_id: data.parent_id ? data.id : null, content: content }
     ]);
     setContent("");
     setIsOpen(false);
     onNewComment();
   }
 
+  const buttons = [
+    {icon: faReply, func: () => setIsOpen(!isOpen)},
+    {icon: faFlag, func: () => {}},
+    {icon: faBan, func: () => {}},
+    /*Owned threads will have edit and
+    delete instead of report and block
+    {icon: faPencil, func: () => {}},
+    {icon: faTrashCan, func: () => {}},*/
+    {icon: faShare, func: () => {}}
+  ]
+
   return (
     <div className="card p-4 rounded-xl">
       <div className="flex flex-col sm:flex-row justify-between">
         <div className="flex items-center flex-wrap">
           <p className="text-gray-400 italic">#3125<span className="ml-1 text-green-400 font-bold">(You)</span></p>
-          {data.reply_id != null &&
+          {data.reply_id &&
             <>
               <FontAwesomeIcon icon={faArrowRightLong} className="mx-2" />
               <p className="text-gray-400 italic">DR</p>
@@ -40,15 +50,10 @@ export default function Comment({ data, onNewComment }:Readonly<{ data: Com; onN
         <p className="text-xs text-gray-400">{readable}</p>
       </div>
       <p className="text-gray-100 font-normal mt-1 mb-2">{data.content}</p>
-      <div className="flex justify-between">
-        <FontAwesomeIcon icon={faReply} className="!w-auto !h-3.5" onClick={toggleMenu} />
-        {/*Owners will have edit and delete instead of report and block:
-        <FontAwesomeIcon icon={faPencil} className="!w-auto !h-3.5" />
-        <FontAwesomeIcon icon={faTrashCan} className="!w-auto !h-3.5" />
-        */}
-        <FontAwesomeIcon icon={faFlag} className="!w-auto !h-3.5" />
-        <FontAwesomeIcon icon={faBan} className="!w-auto !h-3.5" />
-        <FontAwesomeIcon icon={faShare} className="!w-auto !h-3.5" />
+      <div className="flex justify-between text-gray-400">
+        {buttons.map((b, index) =>
+          <FontAwesomeIcon key={index} icon={b.icon} className="!w-auto !h-3.5 hover:text-gray-300" onClick={b.func} />
+        )}
       </div>
       {isOpen &&
         <form className="flex gap-2 mt-3" onSubmit={handleSubmit}>
